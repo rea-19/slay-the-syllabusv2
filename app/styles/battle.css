@@ -1,0 +1,23 @@
+.battle-page {
+    height: 100vh;
+    background: #111;
+    color: white;
+    padding: 20px;
+}
+
+    .arena {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.player,
+.enemy {
+    text-align: center;
+}
+
+.player img,
+.enemy img {
+    width: 250px;
+}
