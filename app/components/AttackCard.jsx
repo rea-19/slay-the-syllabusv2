@@ -1,0 +1,6 @@
+{
+    name,
+    damage,
+    difficulty,
+    icon
+}
