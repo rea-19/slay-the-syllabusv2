@@ -461,348 +461,212 @@ new Question("The LHC accelerates protons to 6.5 TeV. The rest mass energy of a 
     2,
     'I')];
 
+const VSAUCE_EASY = [new Question("What does E = mc² state?",
+    ["A) Energy equals mass times the speed of sound squared", "B) Energy and mass are equivalent, related by the speed of light squared", "C) Energy is always greater than mass", "D) Mass can never be converted to energy"],
+    'B',
+    3,
+    'E'),
+new Question("In E = mc², what does 'c' represent?",
+    ["A) The speed of sound in air", "B) The speed of light in a vacuum (≈ 3 × 10⁸ m/s)", "C) The speed of the object", "D) The charge of an electron"],
+    'B',
+    3,
+    'E'),
+new Question("The mass-energy equivalence relationship (ΔE = Δmc²) implies that:",
+    ["A) Only moving objects have energy", "B) A small amount of mass corresponds to a very large amount of energy", "C) Energy and mass are completely unrelated", "D) Mass increases linearly with energy"],
+    'B',
+    3,
+    'E'),
+new Question("Which of the following applications demonstrates mass-energy equivalence?",
+    ["A) A pendulum swinging", "B) Nuclear fission, where a small mass loss produces enormous energy", "C) A car accelerating on a highway", "D) A magnet attracting iron filings"],
+    'B',
+    3,
+    'E'),
+new Question("What is 'rest mass' in the context of E = mc²?",
+    ["A) The mass of an object when moving at c", "B) The mass of an object when it is at rest, representing its intrinsic energy content", "C) The mass of an object after losing energy", "D) The mass of photons at rest"],
+    'B',
+    3,
+    'E'),
+new Question("Nuclear power plants generate energy primarily through:",
+    ["A) Chemical reactions that release electrons", "B) Mass-energy conversion: a small mass deficit in nuclear reactions produces large amounts of energy", "C) Kinetic energy of spinning turbines alone", "D) The photoelectric effect on uranium"],
+    'B',
+    3,
+    'E'),
+new Question("According to special relativity, which of the following has zero rest mass?",
+    ["A) Electron", "B) Proton", "C) Photon (light particle)", "D) Neutron"],
+    'C',
+    3,
+    'E'),
+new Question("If Δm = 1 kg of mass is fully converted to energy, approximately how much energy is released?",
+    ["A) 3 × 10⁸ J", "B) 9 × 10¹⁶ J", "C) 1 × 10⁸ J", "D) 3 × 10¹⁶ J"],
+    'B',
+    3,
+    'E'),
+new Question("Which of the following best explains why nuclear weapons are so powerful?",
+    ["A) They use chemical reactions that are faster than normal explosives", "B) A tiny mass deficit (Δm) converts to an enormous energy (ΔE = Δmc²) due to c² being very large", "C) They accelerate protons to the speed of light", "D) They split electrons rather than nuclei"],
+    'B',
+    3,
+    'E'),
+new Question("The equation ΔE = Δmc² was derived from which theory?",
+    ["A) Classical Newtonian mechanics", "B) Einstein's special theory of relativity", "C) Maxwell's theory of electromagnetism", "D) Quantum mechanics"],
+    'B',
+    3,
+    'E'),
+new Question("Which statement about photons (particles of light) is correct?",
+    ["A) Photons have rest mass equal to their energy divided by c²", "B) Photons travel at c and have zero rest mass but carry energy and momentum", "C) Photons are slowed by gravity, proving they have mass", "D) Photons cannot carry momentum as they have no mass"],
+    'B',
+    3,
+    'E'),
+new Question("In the context of special relativity, 'binding energy' refers to:",
+    ["A) The kinetic energy of electrons in orbit", "B) The energy equivalent of the mass deficit when nucleons bind into a nucleus", "C) The energy required to move a nucleus from rest", "D) The electrical potential energy between protons"],
+    'B',
+    3,
+    'E')];
 
+const VSAUCE_MEDIUM = [new Question("The sun loses approximately 4 × 10⁹ kg of mass per second via radiation. Using E = mc², how much power does this represent?",
+    ["A) 1.2 × 10¹⁸ W", "B) 3.6 × 10²⁶ W", "C) 4 × 10¹⁷ W", "D) 1.8 × 10²⁰ W"],
+    'B',
+    3,
+    'M'),
+new Question("In nuclear fission of uranium-235, the products have slightly less mass than the original nucleus. This mass deficit:",
+    ["A) Is lost to the environment as heat radiation only", "B) Is converted to kinetic energy of the fission products and radiation via E = mc²", "C) Is converted entirely to neutrinos", "D) Has no practical significance"],
+    'B',
+    3,
+    'M'),
+new Question("The total relativistic energy of an object is E = γm₀c². For a particle at rest (v = 0), γ = 1, so the rest energy is:",
+    ["A) 0", "B) m₀c", "C) m₀c²", "D) ½m₀c²"],
+    'C',
+    3,
+    'M'),
+new Question("Which of the following physical processes directly demonstrates ΔE = Δmc²?",
+    ["A) Combustion of wood", "B) Pair production (gamma ray → electron + positron)", "C) A spring being compressed", "D) Evaporation of water"],
+    'B',
+    3,
+    'M'),
+new Question("In pair production, a photon creates an electron and a positron. The minimum photon energy required is determined by:",
+    ["A) The speed of the photon", "B) The rest mass energy of the electron-positron pair (2m₀c²)", "C) The magnetic field strength in the lab", "D) The temperature of the surrounding medium"],
+    'B',
+    3,
+    'M'),
+new Question("An electron (m₀ = 9.11 × 10⁻³¹ kg) and a positron annihilate. What is the total energy released?",
+    ["A) 1.64 × 10⁻¹³ J", "B) 8.2 × 10⁻¹⁴ J", "C) 9.11 × 10⁻³¹ J", "D) 3 × 10⁸ J"],
+    'A',
+    3,
+    'M')
+new Question("Which statement about the binding energy of a nucleus is correct?",
+    ["A) Binding energy equals the rest mass of the nucleus times c²", "B) The actual mass of a nucleus is slightly LESS than the sum of its individual proton and neutron masses — this deficit is the binding energy", "C) Binding energy is always negative", "D) Adding neutrons always increases binding energy"],
+    'B',
+    3,
+    'M'),
+new Question("Cosmic rays strike atmospheric nuclei, producing muons. Which relativistic effects explain why muons reach Earth's surface?",
+    ["A) Only length contraction in the pion frame", "B) Only time dilation in the muon's rest frame", "C) Time dilation in Earth's frame (muon lives longer) AND length contraction in the muon's frame (shorter atmosphere) — consistent descriptions", "D) Neither; muons are produced close enough to the surface"],
+    'C',
+    3,
+    'M'),
+new Question("In electron-positron annihilation, two gamma-ray photons are produced. Why two photons?",
+    ["A) One photon would violate length contraction", "B) Conservation of momentum requires the two photons to travel in opposite directions", "C) Photons can only be created in pairs due to quantum rules", "D) One photon is for the electron and one for the positron's kinetic energy"],
+    'B',
+    3,
+    'M'),
+new Question("According to special relativity, particle accelerators cannot accelerate massive particles to c because:",
+    ["A) They become too large to fit in the accelerator ring", "B) They must supply increasingly large amounts of energy for smaller and smaller speed increments near c", "C) They exceed c if enough energy is applied", "D) They stop working above v = 0.5c"],
+    'B',
+    3,
+    'M'),
+new Question("The mass-energy relation implies that chemical energy stored in bonds is:",
+    ["A) Unrelated to the mass of the molecule", "B) Associated with a tiny mass difference between reactants and products", "C) Only relevant for nuclear reactions", "D) The dominant form of energy in chemical reactions"],
+    'B',
+    3,
+    'M'),
+new Question("A stationary particle decays into two fragments. If the original rest mass is M and each fragment has rest mass m1 and m2, conservation of energy requires: ",
+    ["A) M = m1 + m2", "B) Mc² = m1c² + m2c² + KE total", "C) M = m1 + m2 + KE/c²", "D) M > m1 + m2 is impossible"],
+    'B',
+    3,
+    'M'),
+new Question("Which of the following synthesis statements is CORRECT?",
+    ["A) Length contraction, time dilation, and E = mc² are independent phenomena with no common origin", "B) All three — time dilation, length contraction, and E = mc² — arise from the same two postulates of special relativity", "C) E = mc² was derived from Newtonian mechanics, while time dilation requires general relativity", "D) Length contraction and time dilation are approximations; only E = mc² is exact"],
+    'B',
+    3,
+    'M')];
+
+const VSAUCE_HARD = [new Question("A nuclear reactor converts 0.05% of the mass of its fuel to energy. If 1000 kg of uranium is used, how much energy is released?",
+    ["A) 4.5 × 10¹³ J", "B) 9 × 10¹³ J", "C) 1.5 × 10¹⁴ J", "D) 4.5 × 10¹⁶ J"],
+    'A',
+    3,
+    'H'),
+new Question("The total relativistic energy-momentum relation is E² = (pc)² + (m₀c²)². For a photon (m₀ = 0):",
+    ["A) E = m₀c²", "B) E = pc", "C) E = p/c", "D) E = p²c"],
+    'B',
+    3,
+    'H'),
+new Question("An object has rest mass 2 kg. At v = 0.866c (γ = 2), its total relativistic energy is:",
+    ["A) 1.8 × 10¹⁷ J", "B) 3.6 × 10¹⁷ J", "C) 9 × 10¹⁶ J", "D) 7.2 × 10¹⁷ J"],
+    'B',
+    3,
+    'H'),
+new Question("In the proton-proton chain fusion in the Sun, ~0.7% of hydrogen mass is converted to energy. Why can't fusion be easily replicated on Earth?",
+    ["A) We don't have enough hydrogen", "B) The temperatures and pressures required to overcome electrostatic repulsion between protons are extreme — equivalent to stellar core conditions", "C) Fusion violates conservation of energy on Earth", "D) Fusion only works in zero gravity"],
+    'B',
+    3,
+    'H'),
+new Question("In pair production (γ → e⁺ + e⁻), if the gamma photon has energy 2.05 MeV and the rest mass energy of each electron is 0.511 MeV, how much kinetic energy do the pair share in total?",
+    ["A) 2.05 MeV", "B) 1.028 MeV total kinetic energy", "C) 0.511 MeV each", "D) 0 — all energy goes to rest mass"],
+    'B',
+    3,
+    'H'),
+new Question("The mass of a helium-4 nucleus is 6.6447 × 10⁻²⁷ kg. The combined mass of 2 protons and 2 neutrons is 6.6951 × 10⁻²⁷ kg. The binding energy of helium-4 is approximately:",
+    ["A) 4.53 × 10⁻¹² J", "B) 4.53 × 10⁻¹³ J", "C) 1.51 × 10⁻¹² J", "D) 3.02 × 10⁻¹² J"],
+    'A',
+    3,
+    'H'),
+new Question("Special relativity predicts that as a particle's kinetic energy approaches infinity, its speed approaches (but never reaches) c. What does this imply about the nature of c?",
+    ["A) c is just a practical engineering limit", "B) c is the fundamental speed limit of the universe, encoded in the structure of spacetime itself", "C) c could be exceeded with a different type of energy source", "D) c is only a limit for protons; other particles could exceed it"],
+    'B',
+    3,
+    'H'),
+new Question("An object's kinetic energy in special relativity is KE = (γ − 1)m₀c². At v = 0.6c (γ = 1.25), the kinetic energy as a fraction of rest energy m₀c² is:",
+    ["A) 0.6", "B) 0.36", "C) 0.25", "D) 0.5"],
+    'C',
+    3,
+    'H')];
+
+    const VSAUCE_IMPOSSIBLE = [new Question("A proton (rest mass energy = 938.3 MeV) is accelerated to a total energy of 9383 MeV (γ = 10). What is its kinetic energy?",
+    ["A) 938.3 MeV", "B) 8444.7 MeV", "C) 9383 MeV", "D) 18766 MeV"],
+    'B',
+    3,
+    'I'),
+new Question("Using E² = (pc)² + (m₀c²)², a particle has momentum p = 1200 MeV/c and rest mass energy m₀c² = 938 MeV. Its total energy E is closest to:",
+    ["A) 262 MeV", "B) 2138 MeV", "C) 1543 MeV", "D) 1200 MeV"],
+    'C',
+    3,
+    'I'),
+new Question("The Higgs field gives elementary particles their rest mass. Under E = mc², what does it mean for a particle to acquire mass via the Higgs mechanism?",
+    ["A) The particle slows down from c to sub-c speeds, and the energy difference becomes its rest mass", "B) The particle's interaction with the Higgs field introduces a rest-energy term m₀c² into its energy-momentum relation, manifesting as inertia", "C) The particle gains mass from photons that hit it in the Higgs field", "D) The particle becomes a different type of boson"],
+    'B',
+    3,
+    'I'),
+new Question("Two photons each of energy 0.511 MeV collide head-on to produce an electron-positron pair. The condition is satisfied because:",
+    ["A) Their combined energy 1.022 MeV = 2 × 0.511 MeV exactly equals the rest mass energy of the pair", "B) The photons' momenta cancel in the centre-of-mass frame, meaning all energy is available for rest mass creation", "C) Pair production requires photons above 1.022 MeV each", "D) Both A and B are correct and consistent"],
+    'D',
+    3,
+    'I'),
+new Question("A hypothetical matter-antimatter rocket converts 100% of fuel mass to energy. Using ΔE = Δmc², if 1 kg of fuel is fully annihilated, the energy output and corresponding propulsion efficiency is:",
+    ["A) Lower than chemical rockets per kg of fuel", "B) Equal to nuclear rockets per kg", "C) The absolute theoretical maximum per unit mass — no physical propulsion system can exceed it", "D) Limited by the speed of sound in the exhaust"],
+    'C',
+    3,
+    'I'),
+new Question("In special relativity, the four-momentum of a particle is conserved in all inertial frames. For a particle at rest decaying into two massless photons, conservation of four-momentum requires:",
+    ["A) The photons travel in the same direction", "B) The photons have equal and opposite momenta, each with energy m₀c²/2", "C) The photons have zero total energy", "D) The decay is only possible if the original particle is moving"],
+    'B',
+    3,
+    'I'),
+new Question("The relativistic kinetic energy formula KE = (γ − 1)m₀c² reduces to the classical ½m₀v² at low speeds. Using a binomial approximation of γ for v << c, which step correctly recovers this?",
+    ["A) γ ≈ 1 + v/c, giving KE ≈ m₀vc", "B) γ ≈ 1 + ½(v²/c²), giving KE = (γ−1)m₀c² ≈ ½m₀v²", "C) γ ≈ 1 − ½(v²/c²), giving KE ≈ −½m₀v²", "D) γ ≈ v/c, giving KE ≈ m₀v²/c − m₀c"],
+    'B',
+    3,
+    'I')];
 
 // ## LEVEL 3 — Vsauce
 // **Focus:** E = mc², Mass-Energy Equivalence & Synthesis
-
-// ---
-
-// ### EASY
-
-// **Q1.** What does E = mc² state?
-// - A) Energy equals mass times the speed of sound squared
-// - B) Energy and mass are equivalent, related by the speed of light squared ✓
-// - C) Energy is always greater than mass
-// - D) Mass can never be converted to energy
-
-// **Answer: B**
-
-// ---
-
-// **Q2.** In E = mc², what does 'c' represent?
-// - A) The speed of sound in air
-// - B) The speed of light in a vacuum (≈ 3 × 10⁸ m/s) ✓
-// - C) The speed of the object
-// - D) The charge of an electron
-
-// **Answer: B**
-
-// ---
-
-// **Q3.** The mass-energy equivalence relationship (ΔE = Δmc²) implies that:
-// - A) Only moving objects have energy
-// - B) A small amount of mass corresponds to a very large amount of energy ✓
-// - C) Energy and mass are completely unrelated
-// - D) Mass increases linearly with energy
-
-// **Answer: B**
-
-// ---
-
-// **Q4.** Which of the following applications demonstrates mass-energy equivalence?
-// - A) A pendulum swinging
-// - B) Nuclear fission, where a small mass loss produces enormous energy ✓
-// - C) A car accelerating on a highway
-// - D) A magnet attracting iron filings
-
-// **Answer: B**
-
-// ---
-
-// **Q5.** What is 'rest mass' in the context of E = mc²?
-// - A) The mass of an object when moving at c
-// - B) The mass of an object when it is at rest, representing its intrinsic energy content ✓
-// - C) The mass of an object after losing energy
-// - D) The mass of photons at rest
-
-// **Answer: B**
-
-// ---
-
-// **Q6.** Nuclear power plants generate energy primarily through:
-// - A) Chemical reactions that release electrons
-// - B) Mass-energy conversion: a small mass deficit in nuclear reactions produces large amounts of energy ✓
-// - C) Kinetic energy of spinning turbines alone
-// - D) The photoelectric effect on uranium
-
-// **Answer: B**
-
-// ---
-
-// **Q7.** According to special relativity, which of the following has zero rest mass?
-// - A) Electron
-// - B) Proton
-// - C) Photon (light particle) ✓
-// - D) Neutron
-
-// **Answer: C**
-
-// ---
-
-// **Q8.** If Δm = 1 kg of mass is fully converted to energy, approximately how much energy is released?
-// - A) 3 × 10⁸ J
-// - B) 9 × 10¹⁶ J ✓
-// - C) 1 × 10⁸ J
-// - D) 3 × 10¹⁶ J
-
-// **Answer: B** — E = mc² = 1 × (3×10⁸)² = 9 × 10¹⁶ J
-
-// ---
-
-// **Q9.** Which of the following best explains why nuclear weapons are so powerful?
-// - A) They use chemical reactions that are faster than normal explosives
-// - B) A tiny mass deficit (Δm) converts to an enormous energy (ΔE = Δmc²) due to c² being very large ✓
-// - C) They accelerate protons to the speed of light
-// - D) They split electrons rather than nuclei
-
-// **Answer: B**
-
-// ---
-
-// **Q10.** The equation ΔE = Δmc² was derived from which theory?
-// - A) Classical Newtonian mechanics
-// - B) Einstein's special theory of relativity ✓
-// - C) Maxwell's theory of electromagnetism
-// - D) Quantum mechanics
-
-// **Answer: B**
-
-// ---
-
-// **Q11.** Which statement about photons (particles of light) is correct?
-// - A) Photons have rest mass equal to their energy divided by c²
-// - B) Photons travel at c and have zero rest mass but carry energy and momentum ✓
-// - C) Photons are slowed by gravity, proving they have mass
-// - D) Photons cannot carry momentum as they have no mass
-
-// **Answer: B**
-
-// ---
-
-// **Q12.** In the context of special relativity, 'binding energy' refers to:
-// - A) The kinetic energy of electrons in orbit
-// - B) The energy equivalent of the mass deficit when nucleons bind into a nucleus ✓
-// - C) The energy required to move a nucleus from rest
-// - D) The electrical potential energy between protons
-
-// **Answer: B**
-
-// ---
-
-// ### MEDIUM
-
-// **Q13.** The sun loses approximately 4 × 10⁹ kg of mass per second via radiation. Using E = mc², how much power does this represent?
-// - A) 1.2 × 10¹⁸ W
-// - B) 3.6 × 10²⁶ W ✓
-// - C) 4 × 10¹⁷ W
-// - D) 1.8 × 10²⁰ W
-
-// **Answer: B** — P = Δm/Δt × c² = 4×10⁹ × 9×10¹⁶ = 3.6 × 10²⁶ W
-
-// ---
-
-// **Q14.** In nuclear fission of uranium-235, the products have slightly less mass than the original nucleus. This mass deficit:
-// - A) Is lost to the environment as heat radiation only
-// - B) Is converted to kinetic energy of the fission products and radiation via E = mc² ✓
-// - C) Is converted entirely to neutrinos
-// - D) Has no practical significance
-
-// **Answer: B**
-
-// ---
-
-// **Q15.** The total relativistic energy of an object is E = γm₀c². For a particle at rest (v = 0), γ = 1, so the rest energy is:
-// - A) 0
-// - B) m₀c
-// - C) m₀c² ✓
-// - D) ½m₀c²
-
-// **Answer: C**
-
-// ---
-
-// **Q16.** Which of the following physical processes directly demonstrates ΔE = Δmc²?
-// - A) Combustion of wood
-// - B) Pair production (gamma ray → electron + positron) ✓
-// - C) A spring being compressed
-// - D) Evaporation of water
-
-// **Answer: B**
-
-// ---
-
-// **Q17.** In pair production, a photon creates an electron and a positron. The minimum photon energy required is determined by:
-// - A) The speed of the photon
-// - B) The rest mass energy of the electron-positron pair (2m₀c²) ✓
-// - C) The magnetic field strength in the lab
-// - D) The temperature of the surrounding medium
-
-// **Answer: B**
-
-// ---
-
-// **Q18.** An electron (m₀ = 9.11 × 10⁻³¹ kg) and a positron annihilate. What is the total energy released?
-// - A) 1.64 × 10⁻¹³ J ✓
-// - B) 8.2 × 10⁻¹⁴ J
-// - C) 9.11 × 10⁻³¹ J
-// - D) 3 × 10⁸ J
-
-// **Answer: A** — E = 2m₀c² = 2 × 9.11×10⁻³¹ × 9×10¹⁶ = 1.64 × 10⁻¹³ J
-
-// ---
-
-// **Q19.** Which statement about the binding energy of a nucleus is correct?
-// - A) Binding energy equals the rest mass of the nucleus times c²
-// - B) The actual mass of a nucleus is slightly LESS than the sum of its individual proton and neutron masses — this deficit is the binding energy ✓
-// - C) Binding energy is always negative
-// - D) Adding neutrons always increases binding energy
-
-// **Answer: B**
-
-// ---
-
-// **Q20.** Cosmic rays strike atmospheric nuclei, producing muons. Which relativistic effects explain why muons reach Earth's surface?
-// - A) Only length contraction in the pion frame
-// - B) Only time dilation in the muon's rest frame
-// - C) Time dilation in Earth's frame (muon lives longer) AND length contraction in the muon's frame (shorter atmosphere) — consistent descriptions ✓
-// - D) Neither; muons are produced close enough to the surface
-
-// **Answer: C**
-
-// ---
-
-// **Q21.** In electron-positron annihilation, two gamma-ray photons are produced. Why two photons?
-// - A) One photon would violate length contraction
-// - B) Conservation of momentum requires the two photons to travel in opposite directions ✓
-// - C) Photons can only be created in pairs due to quantum rules
-// - D) One photon is for the electron and one for the positron's kinetic energy
-
-// **Answer: B**
-
-// ---
-
-// **Q22.** According to special relativity, particle accelerators cannot accelerate massive particles to c because:
-// - A) They become too large to fit in the accelerator ring
-// - B) They must supply increasingly large amounts of energy for smaller and smaller speed increments near c ✓
-// - C) They exceed c if enough energy is applied
-// - D) They stop working above v = 0.5c
-
-// **Answer: B**
-
-// ---
-
-// **Q23.** The mass-energy relation implies that chemical energy stored in bonds is:
-// - A) Unrelated to the mass of the molecule
-// - B) Associated with a tiny mass difference between reactants and products ✓
-// - C) Only relevant for nuclear reactions
-// - D) Exactly equal to the kinetic energy of the atoms
-
-// **Answer: B**
-
-// ---
-
-// **Q24.** A stationary particle decays into two fragments. If the original rest mass is M and each fragment has rest mass m₁ and m₂, conservation of energy requires:
-// - A) M = m₁ + m₂
-// - B) Mc² = m₁c² + m₂c² + KE_total ✓
-// - C) M = m₁ + m₂ + KE/c²
-// - D) M > m₁ + m₂ is impossible
-
-// **Answer: B** — Mass energy + kinetic energy of fragments must equal original rest energy
-
-// ---
-
-// **Q25.** Which of the following synthesis statements is CORRECT?
-// - A) Length contraction, time dilation, and E = mc² are independent phenomena with no common origin
-// - B) All three — time dilation, length contraction, and E = mc² — arise from the same two postulates of special relativity ✓
-// - C) E = mc² was derived from Newtonian mechanics, while time dilation requires general relativity
-// - D) Length contraction and time dilation are approximations; only E = mc² is exact
-
-// **Answer: B**
-
-// ---
-
-// ### HARD
-
-// **Q26.** A nuclear reactor converts 0.05% of the mass of its fuel to energy. If 1000 kg of uranium is used, how much energy is released?
-// - A) 4.5 × 10¹³ J ✓
-// - B) 9 × 10¹³ J
-// - C) 1.5 × 10¹⁴ J
-// - D) 4.5 × 10¹⁶ J
-
-// **Answer: A** — Δm = 0.0005 × 1000 = 0.5 kg; E = 0.5 × 9×10¹⁶ = 4.5 × 10¹³ J
-
-// ---
-
-// **Q27.** The total relativistic energy-momentum relation is E² = (pc)² + (m₀c²)². For a photon (m₀ = 0):
-// - A) E = m₀c²
-// - B) E = pc ✓
-// - C) E = p/c
-// - D) E = p²c
-
-// **Answer: B**
-
-// ---
-
-// **Q28.** An object has rest mass 2 kg. At v = 0.866c (γ = 2), its total relativistic energy is:
-// - A) 1.8 × 10¹⁷ J
-// - B) 3.6 × 10¹⁷ J ✓
-// - C) 9 × 10¹⁶ J
-// - D) 7.2 × 10¹⁷ J
-
-// **Answer: B** — E = γm₀c² = 2 × 2 × 9×10¹⁶ = 3.6 × 10¹⁷ J
-
-// ---
-
-// **Q29.** In the proton-proton chain fusion in the Sun, ~0.7% of hydrogen mass is converted to energy. Why can't fusion be easily replicated on Earth?
-// - A) We don't have enough hydrogen
-// - B) The temperatures and pressures required to overcome electrostatic repulsion between protons are extreme — equivalent to stellar core conditions ✓
-// - C) Fusion violates conservation of energy on Earth
-// - D) Fusion only works in zero gravity
-
-// **Answer: B**
-
-// ---
-
-// **Q30.** In pair production (γ → e⁺ + e⁻), if the gamma photon has energy 2.05 MeV and the rest mass energy of each electron is 0.511 MeV, how much kinetic energy do the pair share in total?
-// - A) 2.05 MeV
-// - B) 1.028 MeV total kinetic energy ✓
-// - C) 0.511 MeV each
-// - D) 0 — all energy goes to rest mass
-
-// **Answer: B** — KE_total = 2.05 − 2(0.511) = 2.05 − 1.022 = 1.028 MeV
-
-// ---
-
-// **Q31.** The mass of a helium-4 nucleus is 6.6447 × 10⁻²⁷ kg. The combined mass of 2 protons and 2 neutrons is 6.6951 × 10⁻²⁷ kg. The binding energy of helium-4 is approximately:
-// - A) 4.53 × 10⁻¹² J ✓
-// - B) 4.53 × 10⁻¹³ J
-// - C) 1.51 × 10⁻¹² J
-// - D) 3.02 × 10⁻¹² J
-
-// **Answer: A** — Δm = 6.6951 − 6.6447 = 0.0504 × 10⁻²⁷ kg; E = 0.0504×10⁻²⁷ × 9×10¹⁶ ≈ 4.53 × 10⁻¹² J
-
-// ---
-
-// **Q32.** Special relativity predicts that as a particle's kinetic energy approaches infinity, its speed approaches (but never reaches) c. What does this imply about the nature of c?
-// - A) c is just a practical engineering limit
-// - B) c is the fundamental speed limit of the universe, encoded in the structure of spacetime itself ✓
-// - C) c could be exceeded with a different type of energy source
-// - D) c is only a limit for protons; other particles could exceed it
-
-// **Answer: B**
-
-// ---
-
-// **Q33.** An object's kinetic energy in special relativity is KE = (γ − 1)m₀c². At v = 0.6c (γ = 1.25), the kinetic energy as a fraction of rest energy m₀c² is:
-// - A) 0.6
-// - B) 0.36
-// - C) 0.25 ✓
-// - D) 0.5
-
-// **Answer: C** — KE/m₀c² = γ − 1 = 1.25 − 1 = 0.25
-
-// ---
 
 // ### IMPOSSIBLE
 
