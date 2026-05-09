@@ -11,6 +11,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import "../styles/battle.css";
 import { Player, Enemy } from "../data/character_data";
+import ResultModal from "../components/ResultModal";
 
 
 export default function BattlePage() {
@@ -19,6 +20,9 @@ export default function BattlePage() {
     const level = 1;
     const [player] = useState(() => new Player(level));
     const [enemy] = useState(() => new Enemy(level));
+
+    const [showResult, setShowResult] = useState(false);
+    const [playerWon, setPlayerWon] = useState(false);
 
     // add the card data to /data/card.js
     const cards = [
@@ -68,13 +72,17 @@ export default function BattlePage() {
 
     // add win/lose logic
     useEffect(() => {
+
     if (enemyHP <= 0) {
-        alert("YOU WIN");
+        setPlayerWon(true);
+        setShowResult(true);
     }
 
     if (playerHP <= 0) {
-        alert("YOU LOSE");
+        setPlayerWon(false);
+        setShowResult(true);
     }
+
     }, [enemyHP, playerHP]);
 
     return (
@@ -198,6 +206,23 @@ export default function BattlePage() {
                     </div>
                 )}
             </div> 
+            <ResultModal
+                isOpen={showResult}
+                won={playerWon}
+                atarScore={92.45}
+
+                onRetry={() => {
+                    window.location.reload();
+                }}
+
+                onExit={() => {
+                    window.location.href = "/";
+                }}
+
+                onLevelUp={() => {
+                    alert("Next Level Coming Soon");
+                }}
+            />
         </div>
     )
 }
