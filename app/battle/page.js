@@ -120,7 +120,7 @@ export default function BattlePage() {
                     <Image
                         src="/characters/player.png"
                         alt="Player"
-                        width={300}
+                        width={200}
                         height={300}
                         priority
                     />
@@ -134,7 +134,7 @@ export default function BattlePage() {
                     <Image
                         src="/characters/bill_nye.png"
                         alt="Enemy"
-                        width={300}
+                        width={200}
                         height={300}
                         priority
                     />
@@ -171,7 +171,7 @@ export default function BattlePage() {
                     </div>
                 ))}
 
-                {/* pop up quiz interface */}
+                {/* pop up quiz dynamic */}
                 {showQuiz && (
                     <div className="quiz-popup">
                         <h2>Physics Question</h2>
