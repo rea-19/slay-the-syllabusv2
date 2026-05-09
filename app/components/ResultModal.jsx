@@ -7,7 +7,7 @@
 "use client";
 
 import Image from "next/image";
-import "/styles/resultModal.css";
+import "../styles/result_modal.css";
 
 export default function ResultModal({
     isOpen,

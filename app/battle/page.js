@@ -5,10 +5,14 @@ import "../styles/battle.css";
 import { Player, Enemy } from "../data/character_data";
 import useBattleLogic from "../hooks/useBattleLogic";
 import { dict } from "../data/q_and_a";
+import ResultModal from "../components/ResultModal";
 
 export default function BattlePage() {
 
     const [level, setLevel] = useState(1);
+
+    const [showResult, setShowResult] = useState(false);
+    const [playerWon, setPlayerWon] = useState(false);
 
     const difficulties = ["E", "M", "H", "I"];
 
@@ -55,19 +59,23 @@ export default function BattlePage() {
         setSelectedAttack(null);
     }
 
-    if (gameOver) {
-        return (
-            <div className="battle-page">
-                <h1>{enemyHP <= 0 ? "GOOD JOB BUDDY YOU WON :)" : "HAH YOU LOST JACKASS"}</h1>
-                {/* TEMP: next boss for testing */}
-                {level < 3 && (
-                    <button onClick={() => setLevel(prev => prev + 1)}>
-                        DEV: Next Boss
-                    </button>
-                )}
-            </div>
-        );
-    }
+    useEffect(() => {
+        if (gameOver) {
+
+            if (enemyHP <= 0) {
+                setPlayerWon(true);
+            } else {
+                setPlayerWon(false);
+            }
+
+            setShowResult(true);
+        }
+    }, [gameOver, enemyHP]);
+
+    const atarScore = Math.max(
+        0,
+        Math.round((playerHP / player.max_hp) * 99)
+    );
 
     return (
         <div className="battle-page">
@@ -133,7 +141,25 @@ export default function BattlePage() {
                     </div>
                 </div>
             )}
+            <ResultModal
+                isOpen={showResult}
+                won={playerWon}
+                atarScore={atarScore}
 
+                onRetry={() => {
+                    window.location.reload();
+                }}
+
+                onExit={() => {
+                    window.location.href = "/";
+                }}
+
+                onLevelUp={() => {
+                    setLevel(prev => prev + 1);
+                    setShowResult(false);
+                }}
+            />
         </div>
+
     );
 }
