@@ -13,33 +13,83 @@ class Question {
     }
 }
 
-const BNE = [new Question(`Which of the following observations CANNOT be explained by classical physics?
-A) A ball falling due to gravity
-B) The survival of muons reaching Earth's surface from the upper atmosphere ✓
-C) A car moving at 60 km/h
-D) Water boiling at 100°C`,
+const BNE = [new Question("Which of the following observations CANNOT be explained by classical physics?",
     ["A) A ball falling due to gravity", "B) The survival of muons reaching Earth's surface from the upper atmosphere", "C) A car moving at 60 km/h", "D) Water boiling at 100°C"],
     'B',
     1,
     'E'), 
-new Question(`What is a frame of reference?
-A) A physical picture frame
-B) A coordinate system used to describe the position and motion of objects ✓
-C) A type of clock used in experiments
-D) A unit of measurement for speed`,
+new Question("What is a frame of reference?",
     ["A) A physical picture frame", "B) A coordinate system used to describe the position and motion of objects", "C) A type of clock used in experiments", "D) A unit of measurement for speed"],
     'B',
     1,
     'E'),
-new Question(`According to special relativity, what is the speed of light in a vacuum?
-A) Approximately 3 × 10⁸ m/s, but it can vary depending on the observer's speed
-B) Exactly 3 × 10⁸ m/s, constant for all inertial observers ✓
-C) Only constant when the light source is at rest
-D) It decreases as the observer moves faster`,
+new Question("According to special relativity, what is the speed of light in a vacuum?",
     ["A) Approximately 3 × 10⁸ m/s, but it can vary depending on the observer's speed", "B) Exactly 3 × 10⁸ m/s, constant for all inertial observers", "C) Only constant when the light source is at rest", "D) It decreases as the observer moves faster"],
     'B',
     1,
+    'E'),
+new Question("What does 'proper time interval' (t₀) refer to?",
+    ["A) Time measured by a clock moving at the speed of light", "B) Time measured by a clock that is stationary relative to the event being timed", "C) Time measured in the Earth's reference frame only", "D) Time measured by the fastest-moving observer"],
+    'B',
+    1,
+    'E'),
+new Question("An inertial frame of reference is one that is:",
+    ["A) Accelerating at a constant rate", "B) Rotating about an axis", "C) Moving at constant velocity (not accelerating)", "D) Fixed to the surface of Earth only"],
+    'C',
+    1,
+    'E'),
+new Question("Which of the following is one of Einstein's two postulates of special relativity?", 
+    ["A) The laws of physics apply only in the observer's frame of reference", "B) The laws of physics are the same in all inertial frames of reference", "C) The speed of light depends on the speed of the source", "D) Time flows at the same rate for all observers"],
+    'B',
+    1,
+    'E'),
+new Question("Time dilation means that:",
+    ["A) Clocks run faster when moving at high speed", "B) Moving clocks run slower compared to stationary ones", "C) Time only changes near black holes", "D) Time dilation only affects digital clocks"],
+    'B',
+    1,
+    'E'),
+new Question("The symbol t₀ in the time dilation formula represents:",
+    ["A) Relativistic time interval", "B) Proper time interval (time measured in the rest frame of the event)", "C) The speed of the observer", "D) The Lorentz factor"],
+    'B',
+    1,
+    'E'),
+new Question("Muons are created in the upper atmosphere (~15 km up) and yet reach Earth's surface. Classical physics cannot explain this because muons:",
+    ["A) Are too heavy to travel far", "B) Travel slower than light so should decay before reaching Earth", "C) Have a very short half-life that classically means they shouldn't survive the trip", "D) Are electrically neutral and unaffected by Earth's magnetic field"],
+    'C',
+    1,
+    'E'),
+new Question("Which formula correctly gives relativistic time interval t?",
+    ["A) t = t₀ × √(1 − v²/c²)", "B) t = t₀ / √(1 − v²/c²)", "C) t = t₀ × v/c", "D) t = t₀ × c/v"],
+    'B',
+    1,
+    'E'),
+new Question("Motion can only be measured relative to:",
+    ["A) The surface of the Earth", "B) The centre of the universe", "C) An observer or reference frame", "D) The speed of light"],
+    'C',
+    1,
+    'E'),
+new Question("Which of the following is the second postulate of special relativity?",
+    ["A) The speed of light in a vacuum is the same for all inertial observers, regardless of the motion of the source or observer", "B) The speed of light depends on the medium it travels through", "C) Observers in different frames measure different speeds of light", "D) Light slows down in a moving frame"],
+    'A',
+    1,
+    'E'),
+new Question("The Lorentz factor γ is defined as:",
+    ["A) γ = √(1 − v²/c²)", "B) γ = v/c", "C) γ = 1/√(1 − v²/c²)", "D) γ = c/v"],
+    'C',
+    1,
+    'E'),
+new Question("If an event lasts 1 second in its own rest frame, a moving observer will measure:",
+    ["A) Less than 1 second", "B) Exactly 1 second", "C) More than 1 second", "D) Zero seconds"],
+    'C',
+    1,
+    'E'),
+new Question("The Michelson-Morley experiment was significant because it:",
+    ["A) Proved the existence of the aether", "B) Found that the speed of light was different in different directions", "C) Failed to detect the aether, suggesting the speed of light is constant", "D) Measured the exact speed of sound in air"],
+    'C',
+    1,
     'E')];
+
+
 
 // Questions within a series of dictionaries
 const dict = {
