@@ -24,25 +24,25 @@ export default function BattlePage() {
     const cards = [
     {
         name: "Sword",
-        icon: "/cards/1_card.png",
+        icon: "/cards/card_easy.png",
         difficulty: "easy",
         damageBonus: 10,
     },
     {
         name: "Spoon",
-        icon: "/cards/2_card.png",
+        icon: "/cards/card_medium.png",
         difficulty: "medium",
         damageBonus: 10,
     },
     {
         name: "Spear",
-        icon: "/cards/3_card.png",
+        icon: "/cards/card_hard.png",
         difficulty: "hard",
         damageBonus: 20,
     },
     {
         name: "Wooden Stick",
-        icon: "/cards/4_card.png",
+        icon: "/cards/card_ultrahard.png",
         difficulty: "ultra hard",
         damageBonus: 40,
     },
@@ -79,84 +79,109 @@ export default function BattlePage() {
 
     return (
         <div className="battle-page">
+            <div className="hud">
+                {/* player HUD */}
+                <div className="hud-player">
 
-
-                {/* arena */}
-            <div className="arena"></div>
-                <div className="hud">
-
-            {/* player HUD */}
-            <div className="hud-player">
-
-                <div className="hp-bar">
-                    <div
-                        className="hp-fill player-hp"
-                        style={{ width: `${playerHP}%` }}
-                    />
-                </div>
-                <h3>{player.name}</h3>
-
-                <p className="hp-text">{playerHP} HP</p>
-            </div>
-
-            <div className="vs">VS</div>
-
-            {/* enemy hud */}
-            <div className="hud-enemy">
-        
-                <div className="hp-bar">
-                    <div
-                        className="hp-fill enemy-hp"
-                        style={{ width: `${enemyHP}%` }}
-                    />
-                </div>
-                <h3>{enemy.name}</h3>
-
-                <p className="hp-text">{enemyHP} HP</p>
-
-            </div>
-
-        </div>
-
-                {/* cards */}
-
-                <div className="cards">
-    
-                    {cards.map((card, index) => (
-
-                    <div key={index} className="card outline outline-2 outline-black-400 hover:scale-105 transition">
-
-                        {/* IMAGE */}
-
-                        <Image
-                            src={card.icon}
-                            alt={card.name}
-                            width={100}
-                            height={140}
-
+                    <div className="hp-bar">
+                        <div
+                            className="hp-fill player-hp"
+                            style={{ width: `${playerHP}%` }}
                         />
-
-                        {/* ADD INFO TO CARD IMAGE */}
-                        <p>{card.name}</p>
-                        <p>{player.attack_damage + card.damageBonus}</p>
-
-                        {/* BUTTON */}
-
-                        <button
-                            onClick={() => {
-                            setSelectedAttack({
-                                name: card.name,
-                                damage: player.attack_damage + card.damageBonus,
-                                difficulty: card.difficulty,
-
-                            });
-                            setShowQuiz(true);
-                            }}
-                        >
-                            Attack
-                        </button>
-
                     </div>
+                    <h3>{player.name}</h3>
+
+                    <p className="hp-text">{playerHP} HP</p>
+                </div>
+
+                <div className="vs">VS</div>
+
+                {/* enemy hud */}
+                <div className="hud-enemy">
+            
+                    <div className="hp-bar">
+                        <div
+                            className="hp-fill enemy-hp"
+                            style={{ width: `${enemyHP}%` }}
+                        />
+                    </div>
+                    <h3>{enemy.name}</h3>
+
+                    <p className="hp-text">{enemyHP} HP</p>
+
+                </div>
+
+            </div>
+
+            {/* arena */}
+
+            <div className="arena">
+                <div className="fighter">
+                    <Image
+                        src="/characters/player.png"
+                        alt="Player"
+                        width={300}
+                        height={300}
+                        priority
+                    />
+
+                </div>
+
+                {/* ENEMY */}
+
+                <div className="fighter enemy-fighter">
+
+                    <Image
+                        src="/characters/bill_nye.png"
+                        alt="Enemy"
+                        width={300}
+                        height={300}
+                        priority
+                    />
+
+
+                </div>
+            </div>
+
+            {/* cards */}
+
+            <div className="cards">
+
+                {cards.map((card, index) => (
+
+                <div key={index} className="card hover:scale-105 transition">
+
+                    {/* IMAGE */}
+
+                    <Image
+                        src={card.icon}
+                        alt={card.name}
+                        width={250}
+                        height={400}
+
+                    />
+
+                    
+                    {/* <p>{card.name}</p>
+                    <p>{player.attack_damage + card.damageBonus}</p> */}
+
+                    {/* BUTTON */}
+
+                    {/* <button
+                        onClick={() => {
+                        setSelectedAttack({
+                            name: card.name,
+                            damage: player.attack_damage + card.damageBonus,
+                            difficulty: card.difficulty,
+
+                        });
+                        setShowQuiz(true);
+                        }}
+                    >
+                        Attack
+                    </button> */}
+
+                </div>
 
                 ))}
                 </div>
