@@ -132,7 +132,10 @@ export default function BattlePage() {
             <div className="hud">
                 <div className="hud-player">
                     <div className="hp-bar">
-                        <div className="hp-fill player-hp" style={{ width: `${playerHP}%` }} />
+                        <div
+                            className="hp-fill player-hp"
+                            style={{ width: `${(playerHP / player.hp) * 100}%` }}
+                        />
                     </div>
                     <h3>{player.name}</h3>
                     <p className="hp-text">{playerHP} HP</p>
@@ -142,7 +145,10 @@ export default function BattlePage() {
 
                 <div className="hud-enemy">
                     <div className="hp-bar">
-                        <div className="hp-fill enemy-hp" style={{ width: `${enemyHP}%` }} />
+                        <div
+                        className="hp-fill enemy-hp"
+                        style={{ width: `${(enemyHP / enemy.hp) * 100}%` }}
+                    />
                     </div>
                     <h3>{enemy.name}</h3>
                     <p className="hp-text">{enemyHP} HP</p>
@@ -150,8 +156,8 @@ export default function BattlePage() {
             </div>
 
 
-            <div className="arena">
-                <div className={`fighter ${playerAttacking ? "player-attack" : ""} ${playerHit ? "player-hit" : ""}`}>
+            <div className={`fighter ${playerAttacking ? "player-attack" : ""} ${playerHit ? "player-hit" : ""}`}>
+                <div className="sprite">
                     <Image
                         src="/characters/Player_sprite.png"
                         alt="Player"
@@ -160,10 +166,11 @@ export default function BattlePage() {
                         priority
                     />
                 </div>
+            </div>
 
-                <div className={`fighter enemy-fighter ${enemyAttacking ? "enemy-attack" : ""} ${enemyHit ? "enemy-hit" : ""}`}>
+            <div className={`fighter enemy-fighter ${enemyAttacking ? "enemy-attack" : ""} ${enemyHit ? "enemy-hit" : ""}`}>
+                <div className="sprite enemy-wrap">
                     <Image
-                        key={level}
                         src={currentEnemySprite}
                         alt="Enemy"
                         width={200}
