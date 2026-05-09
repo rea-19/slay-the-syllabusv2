@@ -100,30 +100,48 @@ export default function BattlePage() {
 
             <div className="arena">
                 <div className="fighter">
-                    <Image src="/characters/player.png" alt="Player" width={200} height={300} priority />
+                    <Image src="/characters/Player_sprite.png" alt="Player" width={150} height={200} priority />
                 </div>
                 <div className="fighter enemy-fighter">
-                    <Image src="/characters/bill_nye.png" alt="Enemy" width={200} height={300} priority />
+                    <Image src="/characters/Bill_knife.png" alt="Enemy" width={200} height={300} priority />
                 </div>
             </div>
 
             <div className="cards">
-                {cards.map((card, index) => (
-                    <div
-                        key={index}
-                        className="card hover:scale-105 transition cursor-pointer"
-                        onClick={() => {
-                            setSelectedAttack({
-                                name: card.name,
-                                damage: player.attack_damage + card.damageBonus,
-                                difficulty: card.difficulty,
-                            });
-                            setShowQuiz(true);
-                        }}
-                    >
-                        <Image src={card.icon} alt={card.name} width={350} height={400} />
-                    </div>
-                ))}
+                {cards.map((card, index) => {
+
+                    const totalDamage =
+                        player.attack_damage + card.damageBonus;
+
+                    return (
+                        <div
+                            key={index}
+                            className="card"
+                            onClick={() => {
+                                setSelectedAttack({
+                                    name: card.name,
+                                    damage: totalDamage,
+                                    difficulty: card.difficulty,
+                                });
+
+                                setShowQuiz(true);
+                            }}
+                        >
+                            <div className="card-damage">
+                                +{totalDamage} DMG
+                            </div>
+
+                            <Image
+                                src={card.icon}
+                                alt={card.name}
+                                width={350}
+                                height={400}
+                                className="card-image"
+                            />
+
+                        </div>
+                    );
+                })}
             </div>
 
             {showQuiz && currentQuestion && (
