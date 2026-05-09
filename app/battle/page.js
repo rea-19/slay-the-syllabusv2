@@ -239,6 +239,22 @@ export default function BattlePage() {
                     setShowResult(false);
                 }}
             />
+
+            {level === 2 && (
+            <img
+                src="/characters/thomas.png"
+                alt="Thomas"
+                style={{
+                    position: "fixed",
+                    bottom: "20px",
+                    left: 0,
+                    width: "150px",
+                    animation: "thomas-run 6s linear infinite",
+                    zIndex: 9999,
+                    pointerEvents: "none"
+                }}
+            />
+        )}
         </div>
     );
 }
