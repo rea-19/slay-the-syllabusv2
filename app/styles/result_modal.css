@@ -1,0 +1,53 @@
+.result-overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.75);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 999;
+}
+
+.result-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 20px;
+}
+
+.atar-score {
+    font-size: 64px;
+    font-weight: bold;
+    color: white;
+
+    text-shadow:
+        0 0 10px gold,
+        0 0 20px gold;
+
+    margin-top: -20px;
+}
+
+.result-buttons {
+    display: flex;
+    gap: 30px;
+}
+
+.image-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    transition: transform 0.15s ease;
+}
+
+.image-button:hover {
+    transform: scale(1.05);
+}
+
+.image-button:active {
+    transform: scale(0.95);
+}
