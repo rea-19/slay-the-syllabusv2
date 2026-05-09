@@ -75,6 +75,7 @@ export default function BattlePage() {
                 <div className="cards">
                     <button
                         onClick={() => {
+
                             setSelectedAttack({
                             name: "Light Attack",
                             damage: 10,
@@ -90,7 +91,7 @@ export default function BattlePage() {
                         onClick={() => {
                             setSelectedAttack({
                             name: "Medium Attack",
-                            damage: 10,
+                            damage: 20,
                             });
 
                             setShowQuiz(true);
@@ -102,8 +103,8 @@ export default function BattlePage() {
                     <button
                         onClick={() => {
                             setSelectedAttack({
-                            name: "Light Attack",
-                            damage: 10,
+                            name: "Heavy Attack",
+                            damage: 30,
                             });
 
                             setShowQuiz(true);
@@ -116,7 +117,7 @@ export default function BattlePage() {
                         onClick={() => {
                             setSelectedAttack({
                             name: "Ultimate Attack",
-                            damage: 10,
+                            damage: 40,
                             });
 
                             setShowQuiz(true);
