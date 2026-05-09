@@ -17,8 +17,8 @@ export default function BattlePage() {
     // only create the level 1 characters
 
     const level = 1;
-    const player = new Player(level);
-    const enemy = new Enemy(level);
+    const [player] = useState(() => new Player(level));
+    const [enemy] = useState(() => new Enemy(level));
 
     // add the card data to /data/card.js
     const cards = [
@@ -79,7 +79,7 @@ export default function BattlePage() {
 
     return (
         <div className="battle-page">
-            <h1>Level 1</h1>
+
 
                 {/* arena */}
             <div className="arena"></div>
@@ -87,7 +87,6 @@ export default function BattlePage() {
 
             {/* player HUD */}
             <div className="hud-player">
-                <h3>{player.name}</h3>
 
                 <div className="hp-bar">
                     <div
@@ -95,6 +94,7 @@ export default function BattlePage() {
                         style={{ width: `${playerHP}%` }}
                     />
                 </div>
+                <h3>{player.name}</h3>
 
                 <p className="hp-text">{playerHP} HP</p>
             </div>
@@ -103,16 +103,17 @@ export default function BattlePage() {
 
             {/* enemy hud */}
             <div className="hud-enemy">
-                <h3>{enemy.name}</h3>
-
+        
                 <div className="hp-bar">
                     <div
                         className="hp-fill enemy-hp"
                         style={{ width: `${enemyHP}%` }}
                     />
                 </div>
+                <h3>{enemy.name}</h3>
 
                 <p className="hp-text">{enemyHP} HP</p>
+
             </div>
 
         </div>
@@ -123,7 +124,7 @@ export default function BattlePage() {
     
                     {cards.map((card, index) => (
 
-                    <div key={index} className="card outline outline-2 outline-black">
+                    <div key={index} className="card outline outline-2 outline-black-400 hover:scale-105 transition">
 
                         {/* IMAGE */}
 
