@@ -1,0 +1,14 @@
+Special relativity (syllabus questions)
+
+- Describe observations of natural phenomena that cannot be explained by classical physics, e.g. the presence of muons in the atmosphere and the momentum of high speed particles in particle accelerators.
+- Describe the concepts of frame of reference and inertial frame of reference.
+- State the two postulates of special relativity.
+- Explain how motion can only be measured relative to an observer.
+- Explain the concept of simultaneity.
+- Describe the consequences of the constant speed of light in a vacuum, e.g. time dilation and length contraction.
+- Describe the concepts of time dilation, proper time interval, relativistic time interval, length contraction, proper length, relativistic length, rest mass and relativistic momentum.
+- Describe the phenomena of time dilation and length contraction, including examples of experimental evidence of the phenomena.
+- State the mass–energy equivalence relationship.
+- Solve problems involving time dilations, length contraction and relativistic momentum using t = t₀ / √(1 - v²/c²), L = L₀ √(1 - v²/c²), pᵥ = m₀v / √(1 - v²/c²) and ΔE = Δmc².
+- Explain the implications of relativistic momentum of objects increasing as they approach the speed of light.
+- Explain paradoxical scenarios that may arise as a result of special relativity including the twins' paradox, flashlights on a train, and the ladder in the barn paradox.
