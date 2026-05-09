@@ -146,45 +146,30 @@ export default function BattlePage() {
             {/* cards */}
 
             <div className="cards">
-
                 {cards.map((card, index) => (
-
-                <div key={index} className="card hover:scale-105 transition">
-
-                    {/* IMAGE */}
-
-                    <Image
-                        src={card.icon}
-                        alt={card.name}
-                        width={250}
-                        height={400}
-
-                    />
-
-                    
-                    {/* <p>{card.name}</p>
-                    <p>{player.attack_damage + card.damageBonus}</p> */}
-
-                    {/* BUTTON */}
-
-                    {/* <button
+                    <div
+                        key={index}
+                        className="card hover:scale-105 transition cursor-pointer"
                         onClick={() => {
-                        setSelectedAttack({
-                            name: card.name,
-                            damage: player.attack_damage + card.damageBonus,
-                            difficulty: card.difficulty,
+                            setSelectedAttack({
+                                name: card.name,
+                                damage: player.attack_damage + card.damageBonus,
+                                difficulty: card.difficulty,
+                            });
 
-                        });
-                        setShowQuiz(true);
+                            setShowQuiz(true);
                         }}
                     >
-                        Attack
-                    </button> */}
 
-                </div>
+                        <Image
+                            src={card.icon}
+                            alt={card.name}
+                            width={350}
+                            height={400}
+                        />
 
+                    </div>
                 ))}
-                </div>
 
                 {/* pop up quiz interface */}
                 {showQuiz && (
@@ -212,6 +197,7 @@ export default function BattlePage() {
                         </div>
                     </div>
                 )}
+            </div> 
         </div>
     )
 }
