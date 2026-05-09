@@ -7,14 +7,48 @@
 // quiz popup
 
 "use client";
+import { useState, useEffect } from "react";
 import "../styles/battle.css";
+import { Player, Enemy } from "../data/character_data";
 
-import { useState } from "react";
 
 export default function BattlePage() {
+    // only create the level 1 characters
 
-    const [playerHP, setPlayerHP] = useState(100);
-    const [enemyHP, setEnemyHP] = useState(100);
+    const level = 1;
+    const player = new Player(level);
+    const enemy = new Enemy(level);
+
+    // add the card data to /data/card.js
+    const cards = [
+    {
+        name: "Sword",
+        icon: "public/cards/1_card.png",
+        difficulty: "easy",
+        damageBonus: 10,
+    },
+    {
+        name: "Spoon",
+        icon: "public/cards/2_card.png",
+        difficulty: "easy",
+        damageBonus: 10,
+    },
+    {
+        name: "Spear",
+        icon: "public/cards/3_card.png",
+        difficulty: "medium",
+        damageBonus: 20,
+    },
+    {
+        name: "Wooden Stick",
+        icon: "public/cards/4_card.png",
+        difficulty: "hard",
+        damageBonus: 40,
+    },
+    ];
+
+    const [playerHP, setPlayerHP] = useState(player.hp);
+    const [enemyHP, setEnemyHP] = useState(enemy.hp);
 
     const [showQuiz, setShowQuiz] = useState(false);
     const [selectedAttack, setSelectedAttack] = useState(null);
@@ -32,6 +66,7 @@ export default function BattlePage() {
 
 
     // add win/lose logic
+    useEffect(() => {
     if (enemyHP <= 0) {
         alert("YOU WIN");
     }
@@ -39,6 +74,7 @@ export default function BattlePage() {
     if (playerHP <= 0) {
         alert("YOU LOSE");
     }
+    }, [enemyHP, playerHP]);
 
     return (
         <div className="battle-page">
@@ -49,6 +85,7 @@ export default function BattlePage() {
                 <div className="player">
                     {/* add the player image!!!!!! */}
                     {/* <img src="" alt="player"></img> */}
+                    <h2>{player.name}</h2>
                     <div className="hp-bar">
                         <div
                             className="hp-fill"
@@ -62,10 +99,11 @@ export default function BattlePage() {
                 <div className="enemy">
                     {/* add the player image!!!!!! */}
                     {/* <img src="" alt="player"></img> */}
+                    <h2>{enemy.name}</h2>
                     <div className="hp-bar">
                         <div
                             className="hp-fill"
-                            style={{ width: `${playerHP}%` }}
+                            style={{ width: `${enemyHP}%` }}
                         ></div>
                     </div>
                 </div>
@@ -78,7 +116,7 @@ export default function BattlePage() {
 
                             setSelectedAttack({
                             name: "Light Attack",
-                            damage: 10,
+                            damage: player.attack_damage + 10, // level of the player + attack damage depending on the card
                             });
 
                             setShowQuiz(true);
@@ -91,7 +129,7 @@ export default function BattlePage() {
                         onClick={() => {
                             setSelectedAttack({
                             name: "Medium Attack",
-                            damage: 20,
+                            damage: player.attack_damage + 20,
                             });
 
                             setShowQuiz(true);
@@ -104,7 +142,7 @@ export default function BattlePage() {
                         onClick={() => {
                             setSelectedAttack({
                             name: "Heavy Attack",
-                            damage: 30,
+                            damage: player.attack_damage + 30,
                             });
 
                             setShowQuiz(true);
@@ -117,7 +155,7 @@ export default function BattlePage() {
                         onClick={() => {
                             setSelectedAttack({
                             name: "Ultimate Attack",
-                            damage: 40,
+                            damage: player.attack_damage + 40,
                             });
 
                             setShowQuiz(true);
