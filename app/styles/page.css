@@ -1,0 +1,202 @@
+/* ── page layout ─────────────────────────────────────────── */
+
+.page {
+  min-height: 100vh;
+  background-image: url('../images/background.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Press Start 2P', monospace;
+  image-rendering: pixelated;
+}
+
+.quest-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+
+/* ── connector path between nodes ───────────────────────── */
+
+.connector {
+  width: 60px;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    #4a5c4a 0px,  #4a5c4a 8px,
+    #2a3a2a 8px,  #2a3a2a 16px
+  );
+}
+
+.connector.done-path {
+  background: repeating-linear-gradient(
+    90deg,
+    #639922 0px,  #639922 8px,
+    #3B6D11 8px,  #3B6D11 16px
+  );
+}
+
+
+/* ── quest button base ───────────────────────────────────── */
+
+.quest-btn {
+  width: 120px;
+  height: 120px;
+  border: 4px solid #4a5c4a;
+  box-shadow: 4px 4px 0 #0a140a;
+  background: #2a3c2a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  transition: border-color 0.1s;
+}
+
+.quest-btn img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  image-rendering: pixelated;
+}
+
+.quest-btn span {
+  font-size: 7px;
+  color: #7a9a6a;
+  text-align: center;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+  padding: 0 6px;
+}
+
+
+/* ── available state ─────────────────────────────────────── */
+
+.quest-btn.available {
+  border-color: #BA7517;
+  box-shadow: 4px 4px 0 #0a140a, 0 0 0 2px #EF9F27;
+  background: #2a2a1a;
+}
+
+.quest-btn.available span {
+  color: #FAC775;
+}
+
+.quest-btn.available:hover {
+  border-color: #EF9F27;
+  box-shadow: 6px 6px 0 #0a140a, 0 0 0 2px #FAC775;
+  transform: translate(-2px, -2px);
+}
+
+.quest-btn.available:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #0a140a;
+}
+
+
+/* ── complete state ──────────────────────────────────────── */
+
+.quest-btn.complete {
+  border-color: #639922;
+  box-shadow: 4px 4px 0 #0a140a, 0 0 0 2px #97C459;
+  background: #1a2a1a;
+}
+
+.quest-btn.complete span {
+  color: #97C459;
+}
+
+
+/* ── locked state ────────────────────────────────────────── */
+
+.quest-btn.locked {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.quest-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+
+/* ── lock / done pip badges ──────────────────────────────── */
+
+.lock-pip,
+.done-pip {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  border: 3px solid;
+}
+
+.lock-pip {
+  background: #2C2C2A;
+  border-color: #5F5E5A;
+}
+
+.done-pip {
+  background: #1a2a1a;
+  border-color: #639922;
+  display: none;
+}
+
+.quest-btn.complete .done-pip {
+  display: flex;
+}
+
+.quest-btn.complete .lock-pip,
+.quest-btn.available .lock-pip {
+  display: none;
+}
+
+
+/* ── ground decoration ───────────────────────────────────── */
+
+.ground-row {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.grass-tile {
+  width: 12px;
+  height: 6px;
+  background: #2a4a2a;
+  border-top: 2px solid #3B6D11;
+}
+
+
+/* ── status console ──────────────────────────────────────── */
+
+.status-box {
+  margin-top: 24px;
+  border: 3px solid #3B6D11;
+  padding: 10px 14px;
+  background: #0d1a0d;
+  font-size: 7px;
+  color: #97C459;
+  line-height: 2;
+  letter-spacing: 0.5px;
+}
+
+.status-box::before {
+  content: '> ';
+  color: #639922;
+}
