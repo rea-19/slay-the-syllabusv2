@@ -19,6 +19,34 @@ export default function BattlePage() {
     const player = new Player(level);
     const enemy = new Enemy(level);
 
+    // add the card data to /data/card.js
+    const cards = [
+    {
+        name: "Sword",
+        icon: "public/cards/1_card.png",
+        difficulty: "easy",
+        damageBonus: 10,
+    },
+    {
+        name: "Spoon",
+        icon: "public/cards/2_card.png",
+        difficulty: "easy",
+        damageBonus: 10,
+    },
+    {
+        name: "Spear",
+        icon: "public/cards/3_card.png",
+        difficulty: "medium",
+        damageBonus: 20,
+    },
+    {
+        name: "Wooden Stick",
+        icon: "public/cards/4_card.png",
+        difficulty: "hard",
+        damageBonus: 40,
+    },
+    ];
+
     const [playerHP, setPlayerHP] = useState(player.hp);
     const [enemyHP, setEnemyHP] = useState(enemy.hp);
 
