@@ -1,96 +1,66 @@
-// contains:
-// attack flow
-// correct/wrong logic
-// HP state  
+"use client";
 
-"use client"; 
-import {useState, useEffect } from "react"; 
-import characters from "../data/character_data"
+import { useState, useEffect } from "react";
+import { Player, Enemy } from "../data/character_data";
 
-export default function useBattleLogic() {
+export default function useBattleLogic(level = 1) {
 
-    const enemyOrder = ["billNye", "tyson", "vsauce"]
-    const playerOrder = ["Flop", "Average", "ATARmaxxer"]
+    const [player, setPlayer] = useState(() => new Player(level));
+    const [enemy, setEnemy] = useState(() => new Enemy(level));
 
-    const [playerKey, setPlayerKey] = useState("Flop")
-    const playerType = characters[playerKey]
+    const [playerHP, setPlayerHP] = useState(player.hp);
+    const [enemyHP, setEnemyHP] = useState(enemy.hp);
 
-    const [enemyKey, setEnemyKey] = useState("billNye")
-    const enemyType = characters[enemyKey]
-   
-    // HP states
-    const [playerHP, setPlayerHP] = useState(playerType.hp);
-    const [enemyHP, setEnemyHP] = useState(enemyType.hp);
-
-    // Turn states
-    const [IsPlayerTurn, setIsPlayerTurn] = useState(true)
-
+    const [isPlayerTurn, setIsPlayerTurn] = useState(true);
+    const [gameOver, setGameOver] = useState(false);
 
     useEffect(() => {
-        setPlayerHP(playerType.hp);
-    }, [playerKey]) 
+        const p = new Player(level);
+        const e = new Enemy(level);
 
-    useEffect(() => {
-        setEnemyHP(enemyType.hp);
-    }, [enemyKey]) 
+        setPlayer(p);
+        setEnemy(e);
 
+        setPlayerHP(p.hp);
+        setEnemyHP(e.hp);
 
-    useEffect(() => {
+        setGameOver(false);
         setIsPlayerTurn(true);
-    },[enemyKey])
+    }, [level]);
 
+    const isPlayerDead = playerHP <= 0;
+    const isEnemyDead = enemyHP <= 0;
 
-    const isPlayerDead = playerHP <= 0 
-    const isEnemyDead = enemyHP <= 0
+    useEffect(() => {
+        if (isPlayerDead || isEnemyDead) {
+            setGameOver(true);
+        }
+    }, [isPlayerDead, isEnemyDead]);
 
-    function answerHandling(correct_answer){ 
+    function answerHandling(correct, damage = player.attack_damage) {
 
-        if (!IsPlayerTurn) return;
+        if (gameOver) return;
 
-        if (isPlayerDead || isEnemyDead) return;
-
-        if (correct_answer){ 
-            setEnemyHP(prev => Math.max(prev - playerType.attack_damage, 0))
+        if (correct) {
+            setEnemyHP(prev => Math.max(prev - damage, 0));
         } else {
-            setPlayerHP(prev => Math.max(prev - enemyType.attack_damage, 0))
+            // using the attributes
+            setPlayerHP(prev => Math.max(prev - enemy.attack_damage, 0));
         }
-        setIsPlayerTurn (prev => !prev)
-    }
 
-    
-
-
-    function nextEnemy() {
-        const cur_index = enemyOrder.indexOf(enemyKey)
-        const next_key = enemyOrder[cur_index + 1]
-
-        if (next_key){
-            setEnemyKey(next_key)
-
-            //progress here
-        }
-    }
-
-    
-
-    function nextPlayer(){ 
-        const cur_index = playerOrder.indexOf(playerKey)
-        const next_key = playerOrder[cur_index + 1]
-
-        if (next_key){
-            setPlayerKey(next_key)
-        }
+        // flip that shit
+        setIsPlayerTurn(prev => !prev);
     }
 
     return {
+        player,
+        enemy,
         playerHP,
         enemyHP,
-        IsPlayerTurn,
+        isPlayerTurn,
         isPlayerDead,
         isEnemyDead,
-        answerHandling,
-        nextEnemy,
-        nextPlayer
-
-    }
+        gameOver,
+        answerHandling
+    };
 }
