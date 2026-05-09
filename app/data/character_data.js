@@ -57,15 +57,12 @@ export class Character {
         this.hp = hp;
         this.attack_damage = attack_damage;
         this.atar = atar;
-        this.round_complete = false;
     }
 
     attack(target) {
         target.hp -= this.attack_damage;
 
-        when (target.hp <= 0) {
-            this.round_complete = true;
-        }
+    
 
         console.log(
         `${this.name} attacks ${target.name} for ${this.attack_damage} damage.`
