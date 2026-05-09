@@ -1,0 +1,84 @@
+.battle-page {
+    height: 100vh;
+    background: #111;
+    color: white;
+    padding: 20px;
+}
+
+    .arena {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.player,
+.enemy {
+    text-align: center;
+}
+
+.player img,
+.enemy img {
+    width: 250px;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+.cards button {
+    padding: 20px;
+    background: crimson;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.cards button:hover {
+    transform: scale(1.05);
+}
+
+.quiz-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #222;
+    padding: 40px;
+    border-radius: 20px;
+    width: 500px;
+    z-index: 100;
+}
+
+.answers {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.answers button {
+    padding: 15px;
+    border: none;
+    cursor: pointer;
+}
+
+.hp-bar {
+    width: 250px;
+    height: 25px;
+    background: gray;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.hp-fill {
+    height: 100%;
+    background: limegreen;
+    transition: width 0.3s ease;
+}

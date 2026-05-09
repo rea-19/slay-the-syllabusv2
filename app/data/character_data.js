@@ -46,7 +46,7 @@ class Enemy extends Character {
         return [
             { name: "BillNye", hp: 100, attack_damage: 10, atar: 80.00 },
             { name: "NeilDeGrasseTyson", hp: 350, attack_damage: 30, atar: 90.00 },
-            { name: "Dragon", hp: 500, attack_damage: 50, atar: 99.00 }
+            { name: "VSauce", hp: 500, attack_damage: 50, atar: 99.00 }
         ][level - 1];
     }
 }
