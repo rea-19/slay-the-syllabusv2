@@ -9,16 +9,16 @@ import ResultModal from "../components/ResultModal";
 
 export default function BattlePage() {
 
-    const [timeRemaining, setTimeRemaining] = useState(30);
-    const [timesUp, setTimesUp] = useState(false);
+    // const [timeRemaining, setTimeRemaining] = useState(30);
+    // const [timesUp, setTimesUp] = useState(false);
 
-    function countdownTimer() {
-        timeRemaining -= 1;
-        if (timeRemaining <= 0) {
-            setTimesUp(true);
-            return;
-        }
-    }
+    // function countdownTimer() {
+    //     timeRemaining -= 1;
+    //     if (timeRemaining <= 0) {
+    //         setTimesUp(true);
+    //         return;
+    //     }
+    // }
 
     // This is the function (put in a for loop)
     // setTimeout(countdownTimer, 1000);
