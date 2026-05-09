@@ -100,7 +100,7 @@ export default function BattlePage() {
 
             <div className="arena">
                 <div className="fighter">
-                    <Image src="/characters/Player_sprite.png" alt="Player" width={150} height={200} priority />
+                    <Image src="/characters/Player_sprite.png" alt="Player" width={100} height={200} priority />
                 </div>
                 <div className="fighter enemy-fighter">
                     <Image src="/characters/Bill_knife.png" alt="Enemy" width={200} height={300} priority />
@@ -155,6 +155,8 @@ export default function BattlePage() {
                             </button>
                         ))}
                     </div>
+
+                    
                 </div>
             )}
             <ResultModal
