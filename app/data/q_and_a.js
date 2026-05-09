@@ -1,3 +1,144 @@
+// Questions formatted as a class
+class Question {
+    constructor(questionText, options, correctAnswer, level, difficulty) {
+        this.questionText = questionText;
+        this.options = options; // Array of options
+        this.correctAnswer = correctAnswer; // The correct option (e.g., 'A', 'B', etc.)
+        this.level = level;
+        this.difficulty = difficulty;
+    }
+
+    isCorrect(answer) {
+        return answer === this.correctAnswer;
+    }
+}
+
+const BNE = [new Question(`Which of the following observations CANNOT be explained by classical physics?
+A) A ball falling due to gravity
+B) The survival of muons reaching Earth's surface from the upper atmosphere ✓
+C) A car moving at 60 km/h
+D) Water boiling at 100°C`,
+    ["A) A ball falling due to gravity", "B) The survival of muons reaching Earth's surface from the upper atmosphere", "C) A car moving at 60 km/h", "D) Water boiling at 100°C"],
+    'B',
+    1,
+    'E'), 
+new Question(`What is a frame of reference?
+A) A physical picture frame
+B) A coordinate system used to describe the position and motion of objects ✓
+C) A type of clock used in experiments
+D) A unit of measurement for speed`,
+    ["A) A physical picture frame", "B) A coordinate system used to describe the position and motion of objects", "C) A type of clock used in experiments", "D) A unit of measurement for speed"],
+    'B',
+    1,
+    'E'),
+new Question(`According to special relativity, what is the speed of light in a vacuum?
+A) Approximately 3 × 10⁸ m/s, but it can vary depending on the observer's speed
+B) Exactly 3 × 10⁸ m/s, constant for all inertial observers ✓
+C) Only constant when the light source is at rest
+D) It decreases as the observer moves faster`,
+    ["A) Approximately 3 × 10⁸ m/s, but it can vary depending on the observer's speed", "B) Exactly 3 × 10⁸ m/s, constant for all inertial observers", "C) Only constant when the light source is at rest", "D) It decreases as the observer moves faster"],
+    'B',
+    1,
+    'E')];
+
+// Questions within a series of dictionaries
+const dict = {
+    // Level 1 - Bill Nye
+    '1': {
+        'E': {
+            "Q1. Which of the following observations CANNOT be explained by classical physics?\nA) A ball falling due to gravity\nB) The survival of muons reaching Earth's surface from the upper atmosphere ✓\nC) A car moving at 60 km/h\nD) Water boiling at 100°C": "B",
+            "Q2. What is a frame of reference?\nA) A physical picture frame\nB) A coordinate system used to describe the position and motion of objects ✓\nC) A type of clock used in experiments\nD) A unit of measurement for speed": "Answer: B",
+            "Q3. According to special relativity, what is the speed of light in a vacuum?\nA) Approximately 3 × 10⁸ m/s, but it can vary depending on the observer's speed\nB) Exactly 3 × 10⁸ m/s, constant for all inertial observers ✓\nC) Only constant when the light source is at rest\nD) It decreases as the observer moves faster": "Answer: B",
+            "Q4. What does 'proper time interval' (t₀) refer to?\nA) Time measured by a clock moving at the speed of light\nB) Time measured by a clock that is stationary relative to the event being timed ✓\nC) Time measured in the Earth's reference frame only\nD) Time measured by the fastest-moving observer": "Answer: B",
+            "Q5. An inertial frame of reference is one that is:\nA) Accelerating at a constant rate\nB) Rotating about an axis\nC) Moving at constant velocity (not accelerating) ✓\nD) Fixed to the surface of Earth only": "Answer: C",
+            "Q6. Which of the following is one of Einstein's two postulates of special relativity?\nA) The laws of physics apply only in the observer's frame of reference\nB) The laws of physics are the same in all inertial frames of reference ✓\nC) The speed of light depends on the speed of the source\nD) Time flows at the same rate for all observers": "Answer: B",
+            "Q7. Time dilation means that:\nA) Clocks run faster when moving at high speed\nB) Moving clocks run slower compared to stationary ones ✓\nC) Time only changes near black holes\nD) Time dilation only affects digital clocks": "Answer: B",
+            "Q8. The symbol t₀ in the time dilation formula represents:\nA) Relativistic time interval\nB) Proper time interval (time measured in the rest frame of the event) ✓\nC) The speed of the observer\nD) The Lorentz factor": "Answer: B",
+            "Q9. Muons are created in the upper atmosphere (~15 km up) and yet reach Earth's surface. Classical physics cannot explain this because muons:\nA) Are too heavy to travel far\nB) Travel slower than light so should decay before reaching Earth\nC) Have a very short half-life that classically means they shouldn't survive the trip ✓\nD) Are electrically neutral and unaffected by Earth's magnetic field": "Answer: C",
+            "Q10. Which formula correctly gives relativistic time interval t?\nA) t = t₀ × √(1 − v²/c²)\nB) t = t₀ / √(1 − v²/c²) ✓\nC) t = t₀ × v/c\nD) t = t₀ × c/v": "Answer: B",
+            "Q11. Motion can only be measured relative to:\nA) The surface of the Earth\nB) The centre of the universe\nC) An observer or reference frame ✓\nD) The speed of light": "Answer: C",
+            "Q12. Which of the following is the second postulate of special relativity?\nA) The speed of light in a vacuum is the same for all inertial observers, regardless of the motion of the source or observer ✓\nB) The speed of light depends on the medium it travels through\nC) Observers in different frames measure different speeds of light\nD) Light slows down in a moving frame": "Answer: A",
+            "Q13. The Lorentz factor γ is defined as:\nA) γ = √(1 − v²/c²)\nB) γ = v/c\nC) γ = 1/√(1 − v²/c²) ✓\nD) γ = c/v": "Answer: C",
+            "Q14. If an event lasts 1 second in its own rest frame, a moving observer will measure:\nA) Less than 1 second\nB) Exactly 1 second\nC) More than 1 second ✓\nD) Zero seconds": "Answer: C",
+            "Q15. The Michelson-Morley experiment was significant because it:\nA) Proved the existence of the aether\nB) Found that the speed of light was different in different directions\nC) Failed to detect the aether, suggesting the speed of light is constant ✓\nD) Measured the exact speed of sound in air": "Answer: C"
+        },
+        'M': {
+            "Q16. Two events occur at the same location but at different times in frame S. An observer in frame S′ moving relative to S will measure:\nA) The same time interval between the events\nB) A longer time interval (time dilation) ✓\nC) A shorter time interval\nD) Exactly twice the time interval": "Answer: B",
+            "Q17. The concept of simultaneity in special relativity states that:\nA) All observers agree on whether two events happen at the same time\nB) Two events simultaneous in one frame may NOT be simultaneous in another frame moving relative to the first ✓\nC) Only events at the same location can be simultaneous\nD) Simultaneity only breaks down at speeds greater than c/2": "Answer: B",
+            "Q18. A spaceship travels at v = 0.8c. The Lorentz factor γ is:\nA) 1.33\nB) 1.67 ✓\nC) 0.60\nD) 2.00": "Answer: B",
+            "Q19. A particle accelerator cannot accelerate protons to exactly the speed of light because:\nA) Protons are too large\nB) As speed increases, relativistic momentum increases, requiring more and more energy to accelerate further ✓\nC) The magnetic fields in accelerators are too weak\nD) Protons decay before reaching high speeds": "Answer: B",
+            "Q20. In the 'flashlight on a train' scenario, a passenger shines a flashlight forward on a moving train. A stationary observer on the platform measures the speed of light as:\nA) c + v (train speed added)\nB) c − v (train speed subtracted)\nC) c (always constant) ✓\nD) Depends on the colour of the light": "Answer: C",
+            "Q21. A clock on a spaceship moving at 0.6c shows a proper time of 10 s for an event. What time does a stationary observer measure? (γ = 1.25)\nA) 8 s\nB) 10 s\nC) 12.5 s ✓\nD) 16.7 s": "Answer: C",
+            "Q22. Which experimental evidence supports time dilation?\nA) The photoelectric effect\nB) The survival of cosmic ray muons at Earth's surface ✓\nC) The double-slit experiment\nD) The Michelson-Morley experiment proving the existence of aether": "Answer: B",
+            "Q23. According to the second postulate of special relativity, the speed of light in a vacuum is:\nA) c only when the source is stationary\nB) c only in the reference frame of Earth\nC) c in all inertial frames, regardless of the motion of the source or observer ✓\nD) c only in the direction of travel": "Answer: C",
+            "Q24. If v = 0 (object at rest), the time dilation formula gives t =\nA) 0\nB) t₀/c\nC) t₀ ✓\nD) Infinite": "Answer: C",
+            "Q25. The Lorentz factor γ = 1/√(1 − v²/c²) is always:\nA) Less than 1\nB) Equal to 1\nC) Greater than or equal to 1 ✓\nD) Equal to v/c": "Answer: C",
+            "Q26. Which of the following is NOT a consequence of the constant speed of light?\nA) Time dilation\nB) Length contraction\nC) Increase in gravitational force with speed ✓\nD) Relativistic momentum increase": "Answer: C",
+            "Q27. A muon has a proper lifetime of 2.2 μs. At v = 0.99c (γ ≈ 7.09), approximately how long does it appear to live from Earth's frame?\nA) 0.31 μs\nB) 2.2 μs\nC) 15.6 μs ✓\nD) 220 μs": "Answer: C",
+            "Q28. In special relativity, which of the following quantities is the same for all inertial observers?\nA) The time between two events\nB) The distance between two events\nC) The spacetime interval ✓\nD) The simultaneity of two events": "Answer: C",
+            "Q29. Which scenario best illustrates the concept of relative motion?\nA) A ball thrown upward in a stationary room\nB) Two astronauts in separate spaceships, each measuring the other as moving ✓\nC) A pendulum swinging in a fixed room\nD) A car braking to a stop": "Answer: B",
+            "Q30. Which correctly explains why muon survival is evidence for BOTH time dilation AND length contraction?\nA) Time dilation (Earth frame): muon lives longer; length contraction (muon frame): atmosphere is shorter — both predict the same physical outcome ✓\nB) Only time dilation applies; length contraction is irrelevant here\nC) Only length contraction applies; time dilation doesn't affect charged particles\nD) Both effects add to double the relativistic benefit": "Answer: A"
+        },
+        'H': {
+            "Q31. A spaceship leaves Earth at v = 0.866c (γ = 2). An astronaut measures the journey to take 5 years. How long does the journey take from Earth's frame?\nA) 2.5 years\nB) 5 years\nC) 10 years ✓\nD) 8.66 years": "Answer: C",
+            "Q32. Two events are separated by Δt₀ = 3 s in the rest frame. A rocket passes at v = 0.8c (γ = 5/3). What time does the rocket observer measure?\nA) 1.8 s\nB) 3.0 s\nC) 5.0 s ✓\nD) 9.0 s": "Answer: C",
+            "Q33. In the twins' paradox, twin A stays on Earth while twin B travels at relativistic speed and returns. Which twin is younger upon reunion, and why?\nA) Twin A, because Earth's gravity slows their time\nB) Twin B, because the travelling twin experiences less proper time due to time dilation ✓\nC) Neither — special relativity says they are the same age\nD) Twin B, because they accelerated and changed inertial frames": "Answer: B",
+            "Q34. Why is the twins' paradox not a genuine paradox under special relativity?\nA) Because both twins are in inertial frames throughout\nB) Because the travelling twin must undergo acceleration to turn around, breaking the symmetry between the two frames ✓\nC) Because time dilation only applies to one direction of travel\nD) Because the Earth twin is affected by length contraction": "Answer: B",
+            "Q35. At what speed must an object travel for its relativistic time to be doubled compared to its proper time?\nA) v = 0.5c\nB) v = 0.707c\nC) v = 0.866c ✓\nD) v = 0.999c": "Answer: C",
+            "Q36. If γ = 10 for a particle, the ratio v/c is approximately:\nA) 0.90\nB) 0.995 ✓\nC) 0.999\nD) 0.9950": "Answer: B",
+            "Q37. A particle has a proper lifetime of 1 μs and travels at v = 0.995c (γ ≈ 10). How far does it travel in the lab frame before decaying?\nA) 299 m ✓\nB) 2990 m\nC) 29.9 m\nD) 0.299 m": "Answer: A",
+            "Q38. An atomic clock on a jet flying at 600 km/h would, after 10 hours, be behind a stationary clock by approximately:\nA) Several minutes\nB) Nanoseconds ✓\nC) Hours\nD) Milliseconds": "Answer: B",
+            "Q39. A muon moving at 0.999c has a proper lifetime of 2.2 μs (γ ≈ 22.4). In the lab frame, its lifetime is approximately:\nA) 2.2 μs\nB) 4.9 μs\nC) 49 μs ✓\nD) 0.1 μs": "Answer: C",
+            "Q40. Two spaceships approach each other, each moving at 0.6c relative to Earth. According to classical (Galilean) velocity addition, their relative speed would be 1.2c. Special relativity predicts:\nA) 1.2c (same as classical)\nB) 0.88c ✓\nC) 0.6c\nD) Greater than c": "Answer: B",
+            "Q41. The Hafele-Keating experiment (1971) flew atomic clocks around the world on jets. The results:\nA) Showed no time difference, disproving special relativity\nB) Confirmed time dilation — clocks on jets ran at different rates compared to ground clocks ✓\nC) Showed time ran faster on the ground\nD) Were inconclusive due to experimental error": "Answer: B",
+            "Q42. In the 'flashlight on a train' paradox, what stops the light from exceeding c in the ground frame?\nA) Air resistance in the train carriage\nB) The postulate that c is constant — light speed does not add to the train's speed ✓\nC) The train is too slow for the effect to appear\nD) The flashlight emits photons backwards": "Answer: B"
+        },
+        'I': {
+            "Q43. A clock on a spaceship moving at v = 0.9c ticks for 1 hour of proper time. How far, in light-hours, has the ship travelled according to Earth observers? (γ ≈ 2.294)\nA) 0.9 light-hours\nB) 1 light-hour\nC) 2.065 light-hours ✓\nD) 2.294 light-hours": "Answer: C",
+            "Q44. Two inertial frames S and S′ move relative to each other at v = 0.6c. In frame S, events A and B are simultaneous and separated by Δx = 1 light-second. In frame S′, the time between events A and B is:\nA) 0\nB) 0.6/c seconds\nC) 0.8 seconds ✓\nD) 1 second": "Answer: C",
+            "Q45. A spaceship travels at v = 0.95c relative to Earth. An astronaut on the ship measures a distance of 1 light-year to a star. What distance does an observer on Earth measure to the same star?\nA) 0.31 light-years\nB) 0.95 light-years\nC) 1 light-year\nD) 3.16 light-years ✓": "Answer: D",
+            "Q46. A particle with a rest mass of 1 kg is accelerated to v = 0.99c. What is its relativistic mass?\nA) 1 kg\nB) 7.09 kg ✓\nC) 0.99 kg\nD) Infinite": "Answer: B",
+            "Q47. In the 'ladder paradox', a ladder moving at relativistic speed appears contracted to an observer on the ground. If the ladder is shorter than the garage in its rest frame, can it fit inside the garage from the ground observer's perspective?\nA) Yes, due to length contraction\nB) No, because the ladder's proper length is greater than the garage\nC) It depends on the observer's frame of reference ✓\nD) The paradox cannot be resolved": "Answer: C",
+            "Q48. A spaceship travels at v = 0.8c relative to Earth. An astronaut on the ship measures a time interval of 1 hour for an event. What time interval does an observer on Earth measure for the same event?\nA) 0.6 hours\nB) 1 hour\nC) 1.67 hours ✓\nD) 2 hours": "Answer: C"
+        }
+    },
+
+    // Level 2 - Neil deGrasse Tyson
+    '2': {
+        'E': {
+            "Q1. What is the proper length (L₀) of an object?\nA) The length measured by an observer moving with the object (in the object's rest frame) ✓\nB) The length measured by a stationary observer\nC) The length of the object when it is moving at the speed of light\nD) The length of the object as observed from Earth": "Answer: A",
+            "Q2. Length contraction means that:\nA) Objects appear longer when moving at high speed\nB) Objects appear shorter in the direction of motion when moving at high speed ✓\nC) Objects only contract near black holes\nD) Length contraction only affects objects made of certain materials": "Answer: B",
+            "Q3. The formula for length contraction is:\nA) L = L₀ × √(1 − v²/c²) ✓\nB) L = L₀ / √(1 − v²/c²)\nC) L = L₀ × v/c\nD) L = L₀ × c/v": "Answer: A",
+            "Q4. If an object has a proper length of 10 m and moves at v = 0.6c, what is its length as measured by a stationary observer? (γ = 1.25)\nA) 5 m\nB) 8 m ✓\nC) 10 m\nD) 12.5 m": "Answer: B",
+            "Q5. Which of the following is a consequence of length contraction?\nA) A moving spaceship appears shorter to a stationary observer ✓\nB) Time runs faster for a moving clock\nC) The speed of light changes for different observers\nD) Mass increases with speed": "Answer: A",
+            "Q6. In the 'ladder paradox', a ladder moving at relativistic speed appears contracted to an observer on the ground. If the ladder is shorter than the garage in its rest frame, can it fit inside the garage from the ground observer's perspective?\nA) Yes, due to length contraction\nB) No, because the ladder's proper length is greater than the garage\nC) It depends on the observer's frame of reference ✓\nD) The paradox cannot be resolved": "Answer: C",
+            "Q7. A spaceship travels at v = 0.8c relative to Earth. An astronaut on the ship measures a time interval of 1 hour for an event. What time interval does an observer on Earth measure for the same event?\nA) 0.6 hours\nB) 1 hour\nC) 1.67 hours ✓\nD) 2 hours": "Answer: C",
+            "Q8. A particle with a rest mass of 1 kg is accelerated to v = 0.99c. What is its relativistic mass?\nA) 1 kg\nB) 7.09 kg ✓\nC) 0.99 kg\nD) Infinite": "Answer: B",
+            "Q9. In the 'ladder paradox', a ladder moving at relativistic speed appears contracted to an observer on the ground. If the ladder is shorter than the garage in its rest frame, can it fit inside the garage from the ground observer's perspective?\nA) Yes, due to length contraction\nB) No, because the ladder's proper length is greater than the garage\nC) It depends on the observer's frame of reference ✓\nD) The paradox cannot be resolved": "Answer: C",
+            "Q10. A spaceship travels at v = 0.8c relative to Earth. An astronaut on the ship measures a time interval of 1 hour for an event. What time interval does an observer on Earth measure for the same event?\nA) 0.6 hours\nB) 1 hour\nC) 1.67 hours ✓\nD) 2 hours": "Answer: C"
+            "Q11. A clock on a spaceship moving at v = 0.9c ticks for 1 hour of proper time. How far, in light-hours, has the ship travelled according to Earth observers? (γ ≈ 2.294)\nA) 0.9 light-hours\nB) 1 light-hour\nC) 2.065 light-hours ✓\nD) 2.294 light-hours": "Answer: C",
+            "Q12. Two inertial frames S and S′ move relative to each other at v = 0.6c. In frame S, events A and B are simultaneous and separated by Δx = 1 light-second. In frame S′, the time between events A and B is:\nA) 0\nB) 0.6/c seconds\nC) 0.8 seconds ✓\nD) 1 second": "Answer: C"
+        },
+        'M': {},
+        'H': {},
+        'I': {}
+    },
+
+    // Level 3 - VSauce
+    '3': {
+        'E': {},
+        'M': {},
+        'H': {},
+        'I': {}
+    }
+};
+
+
+
+
+// Questions in txt form
+
+
 # Special Relativity — Full Question Bank
 
 ---
