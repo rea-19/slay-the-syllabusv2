@@ -25,6 +25,12 @@ export default function BattlePage() {
 
     const [level, setLevel] = useState(1);
 
+    const [playerAttacking, setPlayerAttacking] = useState(false);
+    const [enemyAttacking, setEnemyAttacking] = useState(false);
+
+    const [playerHit, setPlayerHit] = useState(false);
+    const [enemyHit, setEnemyHit] = useState(false);
+
     const [showResult, setShowResult] = useState(false);
     const [playerWon, setPlayerWon] = useState(false);
 
@@ -46,7 +52,7 @@ export default function BattlePage() {
 
     const [questionIndexes, setQuestionIndexes] = useState({ E: 0, M: 0, H: 0, I: 0 });
     const [showQuiz, setShowQuiz] = useState(false);
-    
+
     const [selectedAttack, setSelectedAttack] = useState(null);
 
     const cards = [
@@ -62,48 +68,64 @@ export default function BattlePage() {
         3: "/backgrounds/level3.png",
     };
 
-    const currDifficulty = selectedAttack?.difficulty;
-    const currentQuestion = currDifficulty
-        ? questionPools[currDifficulty][questionIndexes[currDifficulty]]
-        : null;
-
-    function handleAnswer(option) {
-        const correct = option.correct;
-        answerHandling(correct, selectedAttack.damage);
-
-        setQuestionIndexes(prev => ({
-            ...prev,
-            [currDifficulty]: (prev[currDifficulty] + 1) % questionPools[currDifficulty].length
-        }));
-
-        setShowQuiz(false);
-        setSelectedAttack(null);
-    }
-
-    useEffect(() => {
-        if (gameOver) {
-
-            if (enemyHP <= 0) {
-                setPlayerWon(true);
-            } else {
-                setPlayerWon(false);
-            }
-
-            setShowResult(true);
-        }
-    }, [gameOver, enemyHP]);
-
-    const atarScore = Math.max(
-        45,
-        Math.round((playerHP / player.hp) * 99.95)
-    ).toFixed(2);
-
     const battleBackground = {
         backgroundImage: `url(${backgrounds[level]})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
     };
+
+    const currDifficulty = selectedAttack?.difficulty;
+    const currentQuestion = currDifficulty
+        ? questionPools[currDifficulty][questionIndexes[currDifficulty]]
+        : null;
+
+    async function handleAnswer(option) {
+        const correct = option.correct;
+
+        if (correct) {
+            setPlayerAttacking(true);
+            setTimeout(() => {
+                setEnemyHit(true);
+            }, 300);
+
+            setTimeout(() => {
+                setPlayerAttacking(false);
+                setEnemyHit(false);
+            }, 1800);
+
+        } else {
+            setEnemyAttacking(true);
+            setTimeout(() => {
+                setPlayerHit(true);
+            }, 300);
+            setTimeout(() => {
+                setEnemyAttacking(false);
+                setPlayerHit(false);
+            }, 1800);
+        }
+
+        setShowQuiz(false);
+
+        setTimeout(() => {
+
+            answerHandling(correct, selectedAttack.damage);
+            setQuestionIndexes(prev => ({
+                ...prev,
+                [currDifficulty]:
+                    (prev[currDifficulty] + 1) %
+                    questionPools[currDifficulty].length
+            }));
+
+            setSelectedAttack(null);
+
+        }, 2000);
+    }
+
+    const atarScore = Math.max(
+        45,
+        Math.round((playerHP / 100) * 99.95)
+    ).toFixed(2);
 
     return (
         
@@ -129,13 +151,39 @@ export default function BattlePage() {
             </div>
 
             <div className="arena">
-                <div className="fighter">
-                    <Image src="/characters/Player_sprite.png" alt="Player" width={100} height={200} priority />
+                <div
+                    className={`
+                        fighter
+                        ${playerAttacking ? "player-attack" : ""}
+                        ${playerHit ? "player-hit" : ""}
+                    `}
+                >
+                    <Image
+                        src="/characters/Player_sprite.png"
+                        alt="Player"
+                        width={100}
+                        height={200}
+                        priority
+                    />
                 </div>
-                <div className="fighter enemy-fighter">
-                    <Image src="/characters/Bill_knife.png" alt="Enemy" width={200} height={300} priority />
+
+                <div
+                    className={`
+                        fighter enemy-fighter
+                        ${enemyAttacking ? "enemy-attack" : ""}
+                        ${enemyHit ? "enemy-hit" : ""}
+                    `}
+                >
+                    <Image
+                        src="/characters/Bill_knife.png"
+                        alt="Enemy"
+                        width={200}
+                        height={300}
+                        priority
+                    />
                 </div>
             </div>
+
 
             <div className="cards">
                 {cards.map((card, index) => {
