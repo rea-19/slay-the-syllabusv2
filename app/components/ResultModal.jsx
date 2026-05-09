@@ -37,7 +37,7 @@ export default function ResultModal({
                 />
 
                 <h1 className="atar-score">
-                    ATAR: {atarScore}
+                    {atarScore}
                 </h1>
 
                 <div className="result-buttons">

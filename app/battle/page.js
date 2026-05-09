@@ -73,10 +73,9 @@ export default function BattlePage() {
     }, [gameOver, enemyHP]);
 
     const atarScore = Math.max(
-        0,
-        Math.round((playerHP / player.max_hp) * 99)
-    );
-
+        45,
+        Math.round((playerHP / player.hp) * 99.95)
+    ).toFixed(2);
     return (
         <div className="battle-page">
             <div className="hud">
