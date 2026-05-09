@@ -7,7 +7,7 @@ export default function Home() {
    const router = useRouter();
    const [showInstructions, setShowInstructions] = useState(false);
   return (
-    <div style={{ background: "red", width: "100vw", display: "flex", height: "100vh", flexDirection: "column",
+    <div style={{ background: "blue", width: "100vw", display: "flex", height: "100vh", flexDirection: "column",
   alignItems: "center", justifyContent: "center" }}>
       <button onClick={() => router.push("/battle")}>Play Game</button>
       <button onClick={() => setShowInstructions(true)}>Instructions</button>
@@ -16,4 +16,3 @@ export default function Home() {
     </div>
   );
 }
-
