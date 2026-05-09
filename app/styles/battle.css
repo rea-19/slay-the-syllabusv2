@@ -1,15 +1,24 @@
 .battle-page {
+    .battle-page {
     height: 100vh;
-    background: #111;
-    color: white;
-    padding: 20px;
+    background: #ffffff;
+    color: black;
+
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+    overflow: hidden;
+}
 }
 
 .arena {
+    flex: 1;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    margin-top: 50px;
+    position: relative;
+
 }
 
 .player,
@@ -23,10 +32,14 @@
 }
 
 .cards {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin-top: 50px;
 }
 
 .cards button {
@@ -48,11 +61,12 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #222;
+    background: #ffffff;
     padding: 40px;
     border-radius: 20px;
     width: 500px;
     z-index: 100;
+    outline-style: auto;
 }
 
 .answers {
@@ -81,4 +95,68 @@
     height: 100%;
     background: limegreen;
     transition: width 0.3s ease;
+}
+
+.hud {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 40px;
+}
+
+.hud-player,
+.hud-enemy {
+    width: 300px;
+    text-align: center;
+    color: white;
+}
+
+.hp-bar {
+    width: 100%;
+    height: 20px;
+    background: #222;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.player-hp {
+    background: limegreen;
+}
+
+.enemy-hp {
+    background: red;
+}
+
+.hp-text {
+    margin-top: 5px;
+    font-size: 14px;
+    color: rgb(0, 0, 0);
+}
+
+.vs {
+    font-size: 28px;
+    font-weight: bold;
+    color: yellow;
+    text-shadow: 0 0 10px black;
+}
+
+.hp-bar {
+    box-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+
+.hud-player h3,
+.hud-enemy h3 {
+    margin-bottom: 5px;
+    text-shadow: 2px 2px 0 black;
+}
+
+.hp-fill {
+    transition: width 0.5s cubic-bezier(0.2, 1, 0.2, 1);
 }

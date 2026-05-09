@@ -8,6 +8,7 @@
 
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import "../styles/battle.css";
 import { Player, Enemy } from "../data/character_data";
 
@@ -16,33 +17,33 @@ export default function BattlePage() {
     // only create the level 1 characters
 
     const level = 1;
-    const player = new Player(level);
-    const enemy = new Enemy(level);
+    const [player] = useState(() => new Player(level));
+    const [enemy] = useState(() => new Enemy(level));
 
     // add the card data to /data/card.js
     const cards = [
     {
         name: "Sword",
-        icon: "public/cards/1_card.png",
+        icon: "/cards/1_card.png",
         difficulty: "easy",
         damageBonus: 10,
     },
     {
         name: "Spoon",
-        icon: "public/cards/2_card.png",
-        difficulty: "easy",
+        icon: "/cards/2_card.png",
+        difficulty: "medium",
         damageBonus: 10,
     },
     {
         name: "Spear",
-        icon: "public/cards/3_card.png",
-        difficulty: "medium",
+        icon: "/cards/3_card.png",
+        difficulty: "hard",
         damageBonus: 20,
     },
     {
         name: "Wooden Stick",
-        icon: "public/cards/4_card.png",
-        difficulty: "hard",
+        icon: "/cards/4_card.png",
+        difficulty: "ultra hard",
         damageBonus: 40,
     },
     ];
@@ -78,91 +79,86 @@ export default function BattlePage() {
 
     return (
         <div className="battle-page">
-            <h1>Slay the Syllabus</h1>
+
 
                 {/* arena */}
             <div className="arena"></div>
-                <div className="player">
-                    {/* add the player image!!!!!! */}
-                    {/* <img src="" alt="player"></img> */}
-                    <h2>{player.name}</h2>
-                    <div className="hp-bar">
-                        <div
-                            className="hp-fill"
-                            style={{ width: `${playerHP}%` }}
-                        ></div>
-                    </div>
-                </div>
+                <div className="hud">
 
-                {/* enemy */}
+            {/* player HUD */}
+            <div className="hud-player">
 
-                <div className="enemy">
-                    {/* add the player image!!!!!! */}
-                    {/* <img src="" alt="player"></img> */}
-                    <h2>{enemy.name}</h2>
-                    <div className="hp-bar">
-                        <div
-                            className="hp-fill"
-                            style={{ width: `${enemyHP}%` }}
-                        ></div>
-                    </div>
+                <div className="hp-bar">
+                    <div
+                        className="hp-fill player-hp"
+                        style={{ width: `${playerHP}%` }}
+                    />
                 </div>
+                <h3>{player.name}</h3>
+
+                <p className="hp-text">{playerHP} HP</p>
+            </div>
+
+            <div className="vs">VS</div>
+
+            {/* enemy hud */}
+            <div className="hud-enemy">
+        
+                <div className="hp-bar">
+                    <div
+                        className="hp-fill enemy-hp"
+                        style={{ width: `${enemyHP}%` }}
+                    />
+                </div>
+                <h3>{enemy.name}</h3>
+
+                <p className="hp-text">{enemyHP} HP</p>
+
+            </div>
+
+        </div>
 
                 {/* cards */}
 
                 <div className="cards">
-                    <button
-                        onClick={() => {
+    
+                    {cards.map((card, index) => (
 
+                    <div key={index} className="card outline outline-2 outline-black-400 hover:scale-105 transition">
+
+                        {/* IMAGE */}
+
+                        <Image
+                            src={card.icon}
+                            alt={card.name}
+                            width={100}
+                            height={140}
+
+                        />
+
+                        {/* ADD INFO TO CARD IMAGE */}
+                        <p>{card.name}</p>
+                        <p>{player.attack_damage + card.damageBonus}</p>
+
+                        {/* BUTTON */}
+
+                        <button
+                            onClick={() => {
                             setSelectedAttack({
-                            name: "Light Attack",
-                            damage: player.attack_damage + 10, // level of the player + attack damage depending on the card
+                                name: card.name,
+                                damage: player.attack_damage + card.damageBonus,
+                                difficulty: card.difficulty,
+
                             });
-
                             setShowQuiz(true);
-                        }}
+                            }}
                         >
-                        Light Attack
-                    </button>
+                            Attack
+                        </button>
 
-                    <button
-                        onClick={() => {
-                            setSelectedAttack({
-                            name: "Medium Attack",
-                            damage: player.attack_damage + 20,
-                            });
+                    </div>
 
-                            setShowQuiz(true);
-                        }}
-                        >
-                        Medium Attack
-                    </button>
-
-                    <button
-                        onClick={() => {
-                            setSelectedAttack({
-                            name: "Heavy Attack",
-                            damage: player.attack_damage + 30,
-                            });
-
-                            setShowQuiz(true);
-                        }}
-                        >
-                        Heavy Attack
-                    </button>
-                    
-                    <button
-                        onClick={() => {
-                            setSelectedAttack({
-                            name: "Ultimate Attack",
-                            damage: player.attack_damage + 40,
-                            });
-
-                            setShowQuiz(true);
-                        }}
-                        >
-                        Ultimate Attack
-                    </button>
+                ))}
                 </div>
 
                 {/* pop up quiz interface */}
