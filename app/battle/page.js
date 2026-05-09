@@ -128,10 +128,9 @@ export default function BattlePage() {
 
             {showQuiz && currentQuestion && (
                 <div className="quiz-popup">
-                    <p>{currDifficulty}</p>
+                    {/* <p>{currDifficulty}</p> */}
                     <h2>{currentQuestion.q}</h2>
                     <div className="answers">
-   
                         {currentQuestion.a.map((opt, i) => (
                             <button key={i} onClick={() => handleAnswer(opt)}>
                                 {opt.text}
