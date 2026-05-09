@@ -20,7 +20,7 @@
 }
 
 .atar-score {
-    font-size: 64px;
+    font-size: 90px;
     font-weight: bold;
     color: white;
 
@@ -28,7 +28,7 @@
         0 0 10px gold,
         0 0 20px gold;
 
-    margin-top: -20px;
+    margin-top: -10px;
 }
 
 .result-buttons {

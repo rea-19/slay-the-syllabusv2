@@ -7,7 +7,7 @@
 "use client";
 
 import Image from "next/image";
-import "/styles/resultModal.css";
+import "../styles/result_modal.css";
 
 export default function ResultModal({
     isOpen,
@@ -37,7 +37,7 @@ export default function ResultModal({
                 />
 
                 <h1 className="atar-score">
-                    ATAR: {atarScore}
+                    {atarScore}
                 </h1>
 
                 <div className="result-buttons">
