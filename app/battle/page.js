@@ -2,27 +2,11 @@
 import { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
 import "../styles/battle.css";
-import { Player, Enemy } from "../data/character_data";
 import useBattleLogic from "../hooks/useBattleLogic";
 import { dict } from "../data/q_and_a";
 import ResultModal from "../components/ResultModal";
 
 export default function BattlePage() {
-
-    // const [timeRemaining, setTimeRemaining] = useState(30);
-    // const [timesUp, setTimesUp] = useState(false);
-
-    // function countdownTimer() {
-    //     timeRemaining -= 1;
-    //     if (timeRemaining <= 0) {
-    //         setTimesUp(true);
-    //         return;
-    //     }
-    // }
-
-    // This is the function (put in a for loop)
-    // setTimeout(countdownTimer, 1000);
-
     const [level, setLevel] = useState(1);
 
     const [playerAttacking, setPlayerAttacking] = useState(false);
@@ -45,27 +29,34 @@ export default function BattlePage() {
         answerHandling
     } = useBattleLogic(level);
 
-
     const questionPools = useMemo(() =>
         Object.fromEntries(difficulties.map(d => [d, dict[level][d]])),
     [level]);
 
-    const [questionIndexes, setQuestionIndexes] = useState({ E: 0, M: 0, H: 0, I: 0 });
-    const [showQuiz, setShowQuiz] = useState(false);
+    const [questionIndexes, setQuestionIndexes] = useState({
+        E: 0, M: 0, H: 0, I: 0
+    });
 
+    const [showQuiz, setShowQuiz] = useState(false);
     const [selectedAttack, setSelectedAttack] = useState(null);
 
     const cards = [
-        { name: "Sword",       icon: "/cards/card_easy.png",      damageBonus: 10, difficulty: "E" },
-        { name: "Spoon",       icon: "/cards/card_medium.png",    damageBonus: 20, difficulty: "M" },
-        { name: "Spear",       icon: "/cards/card_hard.png",      damageBonus: 30, difficulty: "H" },
-        { name: "Wooden Stick",icon: "/cards/card_ultrahard.png", damageBonus: 50, difficulty: "I" },
+        { name: "Sword", icon: "/cards/card_easy.png", damageBonus: 10, difficulty: "E" },
+        { name: "Spoon", icon: "/cards/card_medium.png", damageBonus: 20, difficulty: "M" },
+        { name: "Spear", icon: "/cards/card_hard.png", damageBonus: 30, difficulty: "H" },
+        { name: "Wooden Stick", icon: "/cards/card_ultrahard.png", damageBonus: 50, difficulty: "I" },
     ];
 
     const backgrounds = {
         1: "/backgrounds/level1.png",
         2: "/backgrounds/level2.png",
         3: "/backgrounds/level3.png",
+    };
+
+    const enemySprites = {
+        1: "/characters/Bill_knife.png",
+        2: "/characters/Neil_tyson.png",
+        3: "/characters/vsauce.png",
     };
 
     const battleBackground = {
@@ -75,7 +66,11 @@ export default function BattlePage() {
         backgroundRepeat: "no-repeat",
     };
 
+    const currentEnemySprite =
+        enemySprites[level] ?? "/characters/Bill_knife.png";
+
     const currDifficulty = selectedAttack?.difficulty;
+
     const currentQuestion = currDifficulty
         ? questionPools[currDifficulty][questionIndexes[currDifficulty]]
         : null;
@@ -85,20 +80,14 @@ export default function BattlePage() {
 
         if (correct) {
             setPlayerAttacking(true);
-            setTimeout(() => {
-                setEnemyHit(true);
-            }, 300);
-
+            setTimeout(() => setEnemyHit(true), 300);
             setTimeout(() => {
                 setPlayerAttacking(false);
                 setEnemyHit(false);
             }, 1800);
-
         } else {
             setEnemyAttacking(true);
-            setTimeout(() => {
-                setPlayerHit(true);
-            }, 300);
+            setTimeout(() => setPlayerHit(true), 300);
             setTimeout(() => {
                 setEnemyAttacking(false);
                 setPlayerHit(false);
@@ -108,8 +97,10 @@ export default function BattlePage() {
         setShowQuiz(false);
 
         setTimeout(() => {
+            if (!selectedAttack) return;
 
             answerHandling(correct, selectedAttack.damage);
+
             setQuestionIndexes(prev => ({
                 ...prev,
                 [currDifficulty]:
@@ -118,9 +109,16 @@ export default function BattlePage() {
             }));
 
             setSelectedAttack(null);
-
         }, 2000);
     }
+
+    useEffect(() => {
+        if (!gameOver) return;
+
+        setPlayerWon(enemyHP <= 0);
+        setShowResult(true);
+
+    }, [gameOver, enemyHP]);
 
     const atarScore = Math.max(
         45,
@@ -128,8 +126,9 @@ export default function BattlePage() {
     ).toFixed(2);
 
     return (
-        
         <div className="battle-page" style={battleBackground}>
+
+
             <div className="hud">
                 <div className="hud-player">
                     <div className="hp-bar">
@@ -150,14 +149,9 @@ export default function BattlePage() {
                 </div>
             </div>
 
+
             <div className="arena">
-                <div
-                    className={`
-                        fighter
-                        ${playerAttacking ? "player-attack" : ""}
-                        ${playerHit ? "player-hit" : ""}
-                    `}
-                >
+                <div className={`fighter ${playerAttacking ? "player-attack" : ""} ${playerHit ? "player-hit" : ""}`}>
                     <Image
                         src="/characters/Player_sprite.png"
                         alt="Player"
@@ -167,15 +161,10 @@ export default function BattlePage() {
                     />
                 </div>
 
-                <div
-                    className={`
-                        fighter enemy-fighter
-                        ${enemyAttacking ? "enemy-attack" : ""}
-                        ${enemyHit ? "enemy-hit" : ""}
-                    `}
-                >
+                <div className={`fighter enemy-fighter ${enemyAttacking ? "enemy-attack" : ""} ${enemyHit ? "enemy-hit" : ""}`}>
                     <Image
-                        src="/characters/Bill_knife.png"
+                        key={level}
+                        src={currentEnemySprite}
                         alt="Enemy"
                         width={200}
                         height={300}
@@ -187,9 +176,7 @@ export default function BattlePage() {
 
             <div className="cards">
                 {cards.map((card, index) => {
-
-                    const totalDamage =
-                        player.attack_damage + card.damageBonus;
+                    const totalDamage = player.attack_damage + card.damageBonus;
 
                     return (
                         <div
@@ -201,7 +188,6 @@ export default function BattlePage() {
                                     damage: totalDamage,
                                     difficulty: card.difficulty,
                                 });
-
                                 setShowQuiz(true);
                             }}
                         >
@@ -216,7 +202,6 @@ export default function BattlePage() {
                                 height={400}
                                 className="card-image"
                             />
-
                         </div>
                     );
                 })}
@@ -224,8 +209,8 @@ export default function BattlePage() {
 
             {showQuiz && currentQuestion && (
                 <div className="quiz-popup">
-                    {/* <p>{currDifficulty}</p> */}
                     <h2>{currentQuestion.q}</h2>
+
                     <div className="answers">
                         {currentQuestion.a.map((opt, i) => (
                             <button key={i} onClick={() => handleAnswer(opt)}>
@@ -233,29 +218,20 @@ export default function BattlePage() {
                             </button>
                         ))}
                     </div>
-
-
                 </div>
             )}
+
             <ResultModal
                 isOpen={showResult}
                 won={playerWon}
                 atarScore={atarScore}
-
-                onRetry={() => {
-                    window.location.reload();
-                }}
-
-                onExit={() => {
-                    window.location.href = "/";
-                }}
-
+                onRetry={() => window.location.reload()}
+                onExit={() => (window.location.href = "/")}
                 onLevelUp={() => {
-                    setLevel(prev => prev + 1);
+                    setLevel(prev => Math.min(prev + 1, 3));
                     setShowResult(false);
                 }}
             />
         </div>
-
     );
 }

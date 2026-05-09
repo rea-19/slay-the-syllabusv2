@@ -10,6 +10,7 @@
     height: 100vh;
     position: relative;
     overflow: hidden;
+    opacity: 70;
 }
 
 .arena {
@@ -273,9 +274,6 @@
     animation: idleFloat 2s ease-in-out infinite;
 }
 
-.enemy-fighter img {
-    transform: scaleX(-1);
-}
 
 @keyframes idleFloat {
     0% {
@@ -293,10 +291,6 @@
     display: block;
 }
 
-.enemy-fighter img {
-    transform: scaleX(-1);
-}
-
 
 
 .player-attack {
@@ -305,14 +299,18 @@
 
 @keyframes playerAttack {
     0% {
-        transform: translateX(0) translateY(60px);
+        transform: translateX(0) translateY(20px);
     }
     50% {
-        transform: translateX(120px) translateY(60px);
+        transform: translateX(800px) translateY(20px);
     }
     100% {
-        transform: translateX(0) translateY(60px);
+        transform: translateX(0) translateY(20px);
     }
+}
+
+.enemy-fighter img {
+    transform: scaleX(-1);
 }
 
 
@@ -322,20 +320,25 @@
 
 @keyframes enemyAttack {
     0% {
-        transform: translateX(0) translateY(60px);
+        transform: translateX(0) translateY(20px);
     }
     50% {
-        transform: translateX(-120px) translateY(60px);
+        transform: translateX(-800px) translateY(20px);
     }
     100% {
-        transform: translateX(0) translateY(60px);
+        transform: translateX(0) translateY(20px);
     }
 }
 
-.player-hit img,
+.player-hit img{
+    animation: hitShake 0.4s ease;
+    filter: brightness(1.5);
+}
+
 .enemy-hit img {
     animation: hitShake 0.4s ease;
     filter: brightness(1.5);
+    transform: scaleX(-1);
 }
 
 @keyframes hitShake {
