@@ -9,16 +9,16 @@ import ResultModal from "../components/ResultModal";
 
 export default function BattlePage() {
 
-    const [timeRemaining, setTimeRemaining] = useState(30);
-    const [timesUp, setTimesUp] = useState(false);
+    // const [timeRemaining, setTimeRemaining] = useState(30);
+    // const [timesUp, setTimesUp] = useState(false);
 
-    function countdownTimer() {
-        timeRemaining -= 1;
-        if (timeRemaining <= 0) {
-            setTimesUp(true);
-            return;
-        }
-    }
+    // function countdownTimer() {
+    //     timeRemaining -= 1;
+    //     if (timeRemaining <= 0) {
+    //         setTimesUp(true);
+    //         return;
+    //     }
+    // }
 
     // This is the function (put in a for loop)
     // setTimeout(countdownTimer, 1000);
@@ -46,6 +46,7 @@ export default function BattlePage() {
 
     const [questionIndexes, setQuestionIndexes] = useState({ E: 0, M: 0, H: 0, I: 0 });
     const [showQuiz, setShowQuiz] = useState(false);
+    
     const [selectedAttack, setSelectedAttack] = useState(null);
 
     const cards = [
@@ -54,6 +55,12 @@ export default function BattlePage() {
         { name: "Spear",       icon: "/cards/card_hard.png",      damageBonus: 30, difficulty: "H" },
         { name: "Wooden Stick",icon: "/cards/card_ultrahard.png", damageBonus: 50, difficulty: "I" },
     ];
+
+    const backgrounds = {
+        1: "/backgrounds/level1.png",
+        2: "/backgrounds/level2.png",
+        3: "/backgrounds/level3.png",
+    };
 
     const currDifficulty = selectedAttack?.difficulty;
     const currentQuestion = currDifficulty
@@ -90,8 +97,17 @@ export default function BattlePage() {
         45,
         Math.round((playerHP / player.hp) * 99.95)
     ).toFixed(2);
+
+    const battleBackground = {
+        backgroundImage: `url(${backgrounds[level]})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+    };
+
     return (
-        <div className="battle-page">
+        
+        <div className="battle-page" style={battleBackground}>
             <div className="hud">
                 <div className="hud-player">
                     <div className="hp-bar">
@@ -170,7 +186,7 @@ export default function BattlePage() {
                         ))}
                     </div>
 
-                    
+
                 </div>
             )}
             <ResultModal
