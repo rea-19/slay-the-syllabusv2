@@ -52,17 +52,31 @@ export default function Home() {
       </div>
 
       {showInstructions && (
-        <img
-          src="/backgrounds/instructionsV2.png"
-          onClick={() => setShowInstructions(false)}
+        <div
           style={{
             position: "absolute",
             top: 0,
             left: 0,
             width: "100%",
             height: "100%",
+            background: "rgba(0,0,0,0.8)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 1000,
           }}
-        />
+          onClick={() => setShowInstructions(false)}
+        >
+          <img
+            src="/backgrounds/instructionsV2.jpg"
+            alt="Instructions"
+            style={{
+              width: "90%",
+              height: "90%",
+              objectFit: "contain",
+            }}
+          />
+        </div>
       )}
     </div>
   );
