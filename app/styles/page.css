@@ -200,3 +200,13 @@
   content: '> ';
   color: #639922;
 }
+
+.home-btn {
+    cursor: pointer;
+    width: 400px;
+    transition: transform 0.15s ease;
+}
+
+.home-btn:hover {
+    transform: scale(1.08);
+}
