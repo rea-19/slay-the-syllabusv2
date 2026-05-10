@@ -35,6 +35,9 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
+## Game Explanation
+Slaying the Syllabus is a multi-stage quest that gamefies the process of learning the QCAA syllabus. It has three stages that get progressively more difficult: Bill Nye (level 1), Neil De Grasse Tyson (level 2), and VSauce (level 3). As you progress the players ATAR (score) increases from the initial 30.00 to 70.00 to the eventual 99.95 and the player becomes an 'ATAR Maxxer.' The game is modelled off the Physics QCE Unit 4 Special Relativity syllabus dot points, with each villian having questions that relate to their special power. Bill Nye can slow down time (time dilation), Neil De Grasse Tyson can shrink his enemy (length contraction), and VSauce can release mass amounts of energy (mass-energy equivalence). 
+
 ## References
 
 Canva. (n.d.). Canva. Canva. https://www.canva.com/
