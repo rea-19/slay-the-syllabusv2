@@ -386,3 +386,29 @@
     font-family: "Jersey 10", sans-serif;
 }
 
+.skip-victory-btn {
+    position: absolute;
+
+    right: 40px;
+    bottom: 40px;
+
+    padding: 14px 22px;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    background: gold;
+    color: black;
+
+    border: 3px solid black;
+    border-radius: 12px;
+
+    cursor: pointer;
+    z-index: 999;
+
+    transition: transform 0.2s ease;
+}
+
+.skip-victory-btn:hover {
+    transform: scale(1.05);
+}

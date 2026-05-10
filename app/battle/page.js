@@ -276,6 +276,13 @@ const [level, setLevel] = useState(getInitialLevel);
                 </div>
             )}
 
+            <button
+                className="skip-victory-btn"
+                onClick={() => setShowVictory(true)}
+            >
+                Skip To Victory
+            </button>
+
             <ResultModal
                 isOpen={showResult && !showVictory}
                 won={playerWon}
@@ -289,6 +296,7 @@ const [level, setLevel] = useState(getInitialLevel);
                     setShowResult(false);
                 }}
             />
+
         </div>
     );
 }
