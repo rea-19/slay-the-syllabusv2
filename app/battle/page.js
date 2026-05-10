@@ -41,6 +41,7 @@ const [level, setLevel] = useState(getInitialLevel);
     const [showResult, setShowResult] = useState(false);
     const [playerWon, setPlayerWon] = useState(false);
 
+
     const difficulties = ["E", "M", "H", "I"];
 
     const {
@@ -62,6 +63,32 @@ const [level, setLevel] = useState(getInitialLevel);
 
     const [showQuiz, setShowQuiz] = useState(false);
     const [selectedAttack, setSelectedAttack] = useState(null);
+    const [timeLeft, setTimeLeft] = useState(20);
+
+    useEffect(() => {
+        if (!showQuiz) return;
+
+        setTimeLeft(20);
+
+        const timer = setInterval(() => {
+            setTimeLeft(prev => {
+                if (prev <= 1) {
+                    clearInterval(timer);
+
+                    setShowQuiz(false);
+                    setPlayerWon(false);
+                    setShowResult(true);
+
+                    return 0;
+                }
+
+                return prev - 1;
+            });
+        }, 1000);
+
+        return () => clearInterval(timer);
+
+    }, [showQuiz]);
 
     const cards = [
         { name: "Sword", icon: "/cards/card_easy.png", damageBonus: 10, difficulty: "E" },
@@ -99,6 +126,7 @@ const [level, setLevel] = useState(getInitialLevel);
         : null;
 
     async function handleAnswer(option) {
+        setTimeLeft(20);
         const correct = option.correct;
 
         if (correct) {
@@ -264,7 +292,13 @@ const [level, setLevel] = useState(getInitialLevel);
 
             {showQuiz && currentQuestion && (
                 <div className="quiz-popup">
-                    <h2>{currentQuestion.q}</h2>
+                    <div className="quiz-header">
+                        <h2>{currentQuestion.q}</h2>
+
+                        <div className="quiz-timer">
+                            {timeLeft}s
+                        </div>
+                    </div>
 
                     <div className="answers">
                         {currentQuestion.a.map((opt, i) => (
