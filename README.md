@@ -34,3 +34,35 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## References
+
+Canva. (n.d.). Canva. Canva. https://www.canva.com/
+
+Fandom. (n.d.). Skip to content The Beluga Cinematic Universe Wiki. Https://Beluga.fandom.com/. https://beluga.fandom.com/wiki/Vsauce
+
+Google Maps. (2026). Queensland Curriculum and Assessment Authority (QCAA). Google.com. https://www.google.com/maps/place/Queensland+Curriculum+and+Assessment+Authority+(QCAA)/@-27.4686092
+
+Isayele87. (2022, November 21). CGI Thomas’ right side view by Isayele87 on DeviantArt. Deviantart.com; DeviantArt. https://www.deviantart.com/isayele87/art/CGI-Thomas-right-side-view-937997739
+
+Kornelis, C. (2017, May 18). Neil deGrasse Tyson on What Every Child Should Know About Science. Wall Street Journal. https://www.wsj.com/articles/neil-degrasse-tyson-1495122652
+
+LadyLazabath. (2017, September 12). Japanese Train Station. Pinterest. https://au.pinterest.com/pin/522769469237983402/
+
+LinkedIn. (n.d.). LinkedIn. LinkedIn. https://www.linkedin.com
+
+Nye, B. (n.d.). Bill Nye The Science Guy. Facebook.com. https://www.facebook.com/billnye/
+
+Pixilart. (n.d.). Pixilart. Pixilart; Pixilart. https://www.pixilart.com/
+
+PNGTREE. (2026). Fire Flame Pixel Art Animation Sprite Frames Vector Design Images. Pngtree.com. https://pngtree.com/freepng/fire-flame-pixel-art-animation-sprite-frames_8524080.html
+
+QCAA. (2024). Physics 2025 v1.0 General senior syllabus. https://www.qcaa.qld.edu.au/downloads/senior-qce/syllabuses/snr_physics_25_syll.pdf
+
+shaniac11. (2024, September 3). Nyoom Neil Tyson Degrasse GIF - Nyoom Neil Tyson Degrasse Speech. Tenor. https://tenor.com/view/nyoom-neil-tyson-degrasse-speech-gif-14708516663242203281
+
+Shutterstock. (n.d.). https://www.shutterstock.com/image-vector/fire-pixel-pattern-2631175195?trackingId=0eb47db1-8daa-4f50-9b64-a64331798353&listId=searchResults. Shutterstock.com.
+
+TextCraft. (2019). Textcraft: Text & logo maker - Minecraft, 8-bit styles and more. Textcraft. https://textcraft.net/
+
+Tibi Puiu. (2013, December 9). Neil deGrasse Tyson is tired of this $h%t. ZME Science. https://www.zmescience.com/space/neil-degrasse-is-tired-of-this-shit-05344/
