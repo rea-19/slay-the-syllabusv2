@@ -1,0 +1,1 @@
+  <div className={`fighter ${playerAttacking ? "player-attack" : ""} ${playerHit ? "player-hit" : ""}`} style={{ transform: `scale(${playerScale})`, transition: "transform 0.5s ease" }}>
