@@ -222,7 +222,7 @@ export default function BattlePage() {
                     className="victory-bg"
                 />
 
-                <h1 className="victory-title">VICTORY</h1>
+                <h1 className="victory-title">ATAR: 99.95</h1>
             </div>
         );
     }
