@@ -132,7 +132,7 @@ export default function BattlePage() {
             <div className="hud">
                 <div className="hud-player">
                     <div className="hp-bar">
-                        <div className="hp-fill player-hp" style={{ width: `${playerHP}%` }} />
+                        <div className="hp-fill player-hp" style={{ width: `${(playerHP / player.hp) * 100}%` }} />
                     </div>
                     <h3>{player.name}</h3>
                     <p className="hp-text">{playerHP} HP</p>
@@ -142,7 +142,7 @@ export default function BattlePage() {
 
                 <div className="hud-enemy">
                     <div className="hp-bar">
-                        <div className="hp-fill enemy-hp" style={{ width: `${enemyHP}%` }} />
+                        <div className="hp-fill enemy-hp" style={{ width: `${(enemyHP / enemy.hp) * 100}%` }} />
                     </div>
                     <h3>{enemy.name}</h3>
                     <p className="hp-text">{enemyHP} HP</p>
@@ -155,7 +155,7 @@ export default function BattlePage() {
                     <Image
                         src="/characters/Player_sprite.png"
                         alt="Player"
-                        width={100}
+                        width={250}
                         height={200}
                         priority
                     />
@@ -166,7 +166,7 @@ export default function BattlePage() {
                         key={level}
                         src={currentEnemySprite}
                         alt="Enemy"
-                        width={200}
+                        width={400}
                         height={300}
                         priority
                     />
