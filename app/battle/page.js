@@ -238,7 +238,7 @@ const [level, setLevel] = useState(getInitialLevel);
                     <Image
                         src="/characters/Player_sprite.png"
                         alt="Player"
-                        width={100}
+                        width={200}
                         height={200}
                         priority
                     />
@@ -249,7 +249,7 @@ const [level, setLevel] = useState(getInitialLevel);
                         key={level}
                         src={currentEnemySprite}
                         alt="Enemy"
-                        width={200}
+                        width={500}
                         height={300}
                         priority
                     />
@@ -281,7 +281,7 @@ const [level, setLevel] = useState(getInitialLevel);
                             <Image
                                 src={card.icon}
                                 alt={card.name}
-                                width={200}
+                                width={300}
                                 height={400}
                                 className="card-image"
                             />
