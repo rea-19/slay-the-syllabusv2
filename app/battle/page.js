@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useMemo } from "react";
+import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import "../styles/battle.css";
 import useBattleLogic from "../hooks/useBattleLogic";
@@ -7,7 +8,26 @@ import { dict } from "../data/q_and_a";
 import ResultModal from "../components/ResultModal";
 
 export default function BattlePage() {
-    const [level, setLevel] = useState(1);
+    const searchParams = useSearchParams();
+    const boss = searchParams.get("boss");
+    
+    const getInitialLevel = () => {
+        switch (boss) {
+            case "bill":
+                return 1;
+
+            case "neil":
+                return 2;
+
+            case "vsauce":
+                return 3;
+
+            default:
+                return 1;
+        }
+    };
+
+const [level, setLevel] = useState(getInitialLevel);
 
     const [playerAttacking, setPlayerAttacking] = useState(false);
     const [enemyAttacking, setEnemyAttacking] = useState(false);
@@ -20,6 +40,7 @@ export default function BattlePage() {
 
     const [showResult, setShowResult] = useState(false);
     const [playerWon, setPlayerWon] = useState(false);
+
 
     const difficulties = ["E", "M", "H", "I"];
 
@@ -42,6 +63,32 @@ export default function BattlePage() {
 
     const [showQuiz, setShowQuiz] = useState(false);
     const [selectedAttack, setSelectedAttack] = useState(null);
+    const [timeLeft, setTimeLeft] = useState(20);
+
+    useEffect(() => {
+        if (!showQuiz) return;
+
+        setTimeLeft(20);
+
+        const timer = setInterval(() => {
+            setTimeLeft(prev => {
+                if (prev <= 1) {
+                    clearInterval(timer);
+
+                    setShowQuiz(false);
+                    setPlayerWon(false);
+                    setShowResult(true);
+
+                    return 0;
+                }
+
+                return prev - 1;
+            });
+        }, 1000);
+
+        return () => clearInterval(timer);
+
+    }, [showQuiz]);
 
     const cards = [
         { name: "Sword", icon: "/cards/card_easy.png", damageBonus: 10, difficulty: "E" },
@@ -79,6 +126,7 @@ export default function BattlePage() {
         : null;
 
     async function handleAnswer(option) {
+        setTimeLeft(20);
         const correct = option.correct;
 
         if (correct) {
@@ -190,7 +238,7 @@ export default function BattlePage() {
                     <Image
                         src="/characters/Player_sprite.png"
                         alt="Player"
-                        width={100}
+                        width={200}
                         height={200}
                         priority
                     />
@@ -201,7 +249,7 @@ export default function BattlePage() {
                         key={level}
                         src={currentEnemySprite}
                         alt="Enemy"
-                        width={200}
+                        width={500}
                         height={300}
                         priority
                     />
@@ -233,7 +281,7 @@ export default function BattlePage() {
                             <Image
                                 src={card.icon}
                                 alt={card.name}
-                                width={200}
+                                width={300}
                                 height={400}
                                 className="card-image"
                             />
@@ -244,7 +292,13 @@ export default function BattlePage() {
 
             {showQuiz && currentQuestion && (
                 <div className="quiz-popup">
-                    <h2>{currentQuestion.q}</h2>
+                    <div className="quiz-header">
+                        <h2>{currentQuestion.q}</h2>
+
+                        <div className="quiz-timer">
+                            {timeLeft}s
+                        </div>
+                    </div>
 
                     <div className="answers">
                         {currentQuestion.a.map((opt, i) => (
@@ -255,6 +309,13 @@ export default function BattlePage() {
                     </div>
                 </div>
             )}
+
+            <button
+                className="skip-victory-btn"
+                onClick={() => setShowVictory(true)}
+            >
+                Skip To Victory
+            </button>
 
             <ResultModal
                 isOpen={showResult && !showVictory}
@@ -269,6 +330,7 @@ export default function BattlePage() {
                     setShowResult(false);
                 }}
             />
+
         </div>
     );
 }
