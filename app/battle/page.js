@@ -145,7 +145,10 @@ export default function BattlePage() {
                     alt="Victory"
                     fill
                     priority
+                    className="victory-bg"
                 />
+
+                <h1 className="victory-title">VICTORY</h1>
             </div>
         );
     }
@@ -154,6 +157,8 @@ export default function BattlePage() {
         45,
         Math.round((playerHP / player.hp) * 99.95)
     ).toFixed(2);
+
+    
 
     return (
         <div className="battle-page" style={battleBackground}>
@@ -185,7 +190,7 @@ export default function BattlePage() {
                     <Image
                         src="/characters/Player_sprite.png"
                         alt="Player"
-                        width={250}
+                        width={100}
                         height={200}
                         priority
                     />
@@ -196,7 +201,7 @@ export default function BattlePage() {
                         key={level}
                         src={currentEnemySprite}
                         alt="Enemy"
-                        width={400}
+                        width={200}
                         height={300}
                         priority
                     />
@@ -228,7 +233,7 @@ export default function BattlePage() {
                             <Image
                                 src={card.icon}
                                 alt={card.name}
-                                width={350}
+                                width={200}
                                 height={400}
                                 className="card-image"
                             />

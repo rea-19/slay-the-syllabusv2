@@ -359,3 +359,30 @@
 .victory-screen img {
     object-fit: cover;
 }
+
+.victory-screen {
+    position: fixed;
+    inset: 0;
+}
+
+.victory-bg {
+    object-fit: cover;
+    z-index: 0;
+}
+
+.victory-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    z-index: 2;
+
+    font-size: 120px;
+    font-weight: bold;
+    color: gold;
+
+    text-shadow: 0 0 20px black;
+    font-family: "Jersey 10", sans-serif;
+}
+
