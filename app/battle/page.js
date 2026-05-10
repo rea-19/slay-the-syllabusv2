@@ -1,11 +1,12 @@
 "use client";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import "../styles/battle.css";
 import useBattleLogic from "../hooks/useBattleLogic";
 import { dict } from "../data/q_and_a";
 import ResultModal from "../components/ResultModal";
+
 
 export default function BattlePage() {
     const searchParams = useSearchParams();
@@ -27,7 +28,7 @@ export default function BattlePage() {
         }
     };
 
-const [level, setLevel] = useState(getInitialLevel);
+    const [level, setLevel] = useState(getInitialLevel);
 
     const [playerAttacking, setPlayerAttacking] = useState(false);
     const [enemyAttacking, setEnemyAttacking] = useState(false);
@@ -41,6 +42,29 @@ const [level, setLevel] = useState(getInitialLevel);
     const [showResult, setShowResult] = useState(false);
     const [playerWon, setPlayerWon] = useState(false);
 
+    const audioRef = useRef(null);
+    useEffect(() => {
+        if (!audioRef.current) return;
+
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+
+        const musicMap = {
+            1: "/music/amaksi-night-detective-226857(bill_nie).mp3",
+            2: "/music/soulprodmusic-train-149189(neil_tyson).mp3",
+            3: "/music/magpiemusic-action-race-rock-music-513682(vsauce).mp3",
+        };
+
+        audioRef.current.src = musicMap[level];
+        audioRef.current.loop = true;
+
+        const playPromise = audioRef.current.play();
+
+        if (playPromise !== undefined) {
+            playPromise.catch(() => {
+            });
+        }
+    }, [level]);
 
     const difficulties = ["E", "M", "H", "I"];
 
@@ -52,6 +76,8 @@ const [level, setLevel] = useState(getInitialLevel);
         gameOver,
         answerHandling
     } = useBattleLogic(level);
+
+    const playerScale = playerHP <= 90 ? 0.5 : 1;
 
     const questionPools = useMemo(() =>
         Object.fromEntries(difficulties.map(d => [d, dict[level][d]])),
@@ -210,7 +236,7 @@ const [level, setLevel] = useState(getInitialLevel);
 
     return (
         <div className="battle-page" style={battleBackground}>
-
+            <audio ref={audioRef} />
 
             <div className="hud">
                 <div className="hud-player">
@@ -234,7 +260,13 @@ const [level, setLevel] = useState(getInitialLevel);
 
 
             <div className="arena">
-                <div className={`fighter ${playerAttacking ? "player-attack" : ""} ${playerHit ? "player-hit" : ""}`}>
+                <div
+                    className={`fighter ${playerAttacking ? "player-attack" : ""} ${playerHit ? "player-hit" : ""}`}
+                    style={{
+                        transform: `scale(${playerScale})`,
+                        transition: "transform 0.5s ease"
+                    }}
+                >
                     <Image
                         src="/characters/Player_sprite.png"
                         alt="Player"
