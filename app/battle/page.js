@@ -12,6 +12,9 @@ export default function BattlePage() {
     const [playerAttacking, setPlayerAttacking] = useState(false);
     const [enemyAttacking, setEnemyAttacking] = useState(false);
 
+    const [showVictory, setShowVictory] = useState(false);
+    const [hasHandledGameOver, setHasHandledGameOver] = useState(false);
+
     const [playerHit, setPlayerHit] = useState(false);
     const [enemyHit, setEnemyHit] = useState(false);
 
@@ -56,7 +59,7 @@ export default function BattlePage() {
     const enemySprites = {
         1: "/characters/Bill_knife.png",
         2: "/characters/Neil_tyson.png",
-        3: "/characters/vsauce.png",
+        3: "/characters/v-sauce.png",
     };
 
     const battleBackground = {
@@ -114,15 +117,42 @@ export default function BattlePage() {
 
     useEffect(() => {
         if (!gameOver) return;
+        if (hasHandledGameOver) return;
 
-        setPlayerWon(enemyHP <= 0);
-        setShowResult(true);
+        setHasHandledGameOver(true);
 
-    }, [gameOver, enemyHP]);
+        const isWin = enemyHP <= 0;
+
+        setPlayerWon(isWin);
+
+        if (isWin && level === 3) {
+            setShowVictory(true);
+            setShowResult(false);
+        } else {
+            setShowResult(true);
+        }
+
+    }, [gameOver, enemyHP, level]);
+    useEffect(() => {
+        setHasHandledGameOver(false);
+    }, [level]);
+
+    if (showVictory) {
+        return (
+            <div className="victory-screen">
+                <Image
+                    src="/backgrounds/victory_screen.png"
+                    alt="Victory"
+                    fill
+                    priority
+                />
+            </div>
+        );
+    }
 
     const atarScore = Math.max(
         45,
-        Math.round((playerHP / 100) * 99.95)
+        Math.round((playerHP / player.hp) * 99.95)
     ).toFixed(2);
 
     return (
@@ -222,13 +252,15 @@ export default function BattlePage() {
             )}
 
             <ResultModal
-                isOpen={showResult}
+                isOpen={showResult && !showVictory}
                 won={playerWon}
                 atarScore={atarScore}
                 onRetry={() => window.location.reload()}
                 onExit={() => (window.location.href = "/")}
                 onLevelUp={() => {
-                    setLevel(prev => Math.min(prev + 1, 3));
+                    if (level === 3) return;
+
+                    setLevel(prev => prev + 1);
                     setShowResult(false);
                 }}
             />

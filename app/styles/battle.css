@@ -349,3 +349,13 @@
     80% { transform: translateX(10px); }
     100% { transform: translateX(0); }
 }
+
+.victory-screen {
+    position: fixed;
+    inset: 0;
+    background: black;
+}
+
+.victory-screen img {
+    object-fit: cover;
+}
