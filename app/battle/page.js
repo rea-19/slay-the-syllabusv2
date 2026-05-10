@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useMemo } from "react";
+import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import "../styles/battle.css";
 import useBattleLogic from "../hooks/useBattleLogic";
@@ -7,7 +8,26 @@ import { dict } from "../data/q_and_a";
 import ResultModal from "../components/ResultModal";
 
 export default function BattlePage() {
-    const [level, setLevel] = useState(1);
+    const searchParams = useSearchParams();
+    const boss = searchParams.get("boss");
+    
+    const getInitialLevel = () => {
+        switch (boss) {
+            case "bill":
+                return 1;
+
+            case "neil":
+                return 2;
+
+            case "vsauce":
+                return 3;
+
+            default:
+                return 1;
+        }
+    };
+
+const [level, setLevel] = useState(getInitialLevel);
 
     const [playerAttacking, setPlayerAttacking] = useState(false);
     const [enemyAttacking, setEnemyAttacking] = useState(false);
