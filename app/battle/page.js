@@ -132,10 +132,7 @@ export default function BattlePage() {
             <div className="hud">
                 <div className="hud-player">
                     <div className="hp-bar">
-                        <div
-                            className="hp-fill player-hp"
-                            style={{ width: `${(playerHP / player.hp) * 100}%` }}
-                        />
+                        <div className="hp-fill player-hp" style={{ width: `${playerHP}%` }} />
                     </div>
                     <h3>{player.name}</h3>
                     <p className="hp-text">{playerHP} HP</p>
@@ -145,10 +142,7 @@ export default function BattlePage() {
 
                 <div className="hud-enemy">
                     <div className="hp-bar">
-                        <div
-                        className="hp-fill enemy-hp"
-                        style={{ width: `${(enemyHP / enemy.hp) * 100}%` }}
-                    />
+                        <div className="hp-fill enemy-hp" style={{ width: `${enemyHP}%` }} />
                     </div>
                     <h3>{enemy.name}</h3>
                     <p className="hp-text">{enemyHP} HP</p>
@@ -156,8 +150,8 @@ export default function BattlePage() {
             </div>
 
 
-            <div className={`fighter ${playerAttacking ? "player-attack" : ""} ${playerHit ? "player-hit" : ""}`}>
-                <div className="sprite">
+            <div className="arena">
+                <div className={`fighter ${playerAttacking ? "player-attack" : ""} ${playerHit ? "player-hit" : ""}`}>
                     <Image
                         src="/characters/Player_sprite.png"
                         alt="Player"
@@ -166,11 +160,10 @@ export default function BattlePage() {
                         priority
                     />
                 </div>
-            </div>
 
-            <div className={`fighter enemy-fighter ${enemyAttacking ? "enemy-attack" : ""} ${enemyHit ? "enemy-hit" : ""}`}>
-                <div className="sprite enemy-wrap">
+                <div className={`fighter enemy-fighter ${enemyAttacking ? "enemy-attack" : ""} ${enemyHit ? "enemy-hit" : ""}`}>
                     <Image
+                        key={level}
                         src={currentEnemySprite}
                         alt="Enemy"
                         width={200}
@@ -239,22 +232,6 @@ export default function BattlePage() {
                     setShowResult(false);
                 }}
             />
-
-            {level === 2 && (
-            <img
-                src="/characters/thomas.png"
-                alt="Thomas"
-                style={{
-                    position: "fixed",
-                    bottom: "20px",
-                    left: 0,
-                    width: "150px",
-                    animation: "thomas-run 6s linear infinite",
-                    zIndex: 9999,
-                    pointerEvents: "none"
-                }}
-            />
-        )}
         </div>
     );
 }
